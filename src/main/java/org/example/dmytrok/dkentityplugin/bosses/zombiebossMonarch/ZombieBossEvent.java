@@ -1,4 +1,4 @@
-package org.example.dmytrok.dkentityplugin.zombiebossMonarch;
+package org.example.dmytrok.dkentityplugin.bosses.zombiebossMonarch;
 
 import org.bukkit.*;
 import org.bukkit.entity.*;
@@ -26,9 +26,10 @@ public class ZombieBossEvent implements Listener {
         world.playSound(location, Sound.ENTITY_ENDERDRAGON_DEATH, 0.5f, 50);
         event.getDrops().clear();
 
+        //Grave
+
         Random random = new Random();
         int graveBreakerChance = random.nextInt(500);
-
         if(graveBreakerChance == 1) {
             ItemStack monarchDrop = new ItemStack(Material.GOLD_AXE, 1);
             ItemMeta monarchDropGraveBreaker = monarchDrop.getItemMeta();
@@ -43,12 +44,16 @@ public class ZombieBossEvent implements Listener {
 
             world.dropItem(location, monarchDrop);
         }
+
+        //Breaker
+
+
         ItemStack diamond = new ItemStack(Material.DIAMOND, 10);
         ItemStack emeralds = new ItemStack(Material.EMERALD, 10);
         ItemStack gold = new ItemStack(Material.GOLD_INGOT, 10);
 
         for (Player player : world.getPlayers()) {
-            player.sendMessage("§5Monarch of Death has fallen!");
+            player.sendMessage("§5Monarch of Death did not please Death..!");
         }
         world.dropItem(location, diamond);
         world.dropItem(location, emeralds);

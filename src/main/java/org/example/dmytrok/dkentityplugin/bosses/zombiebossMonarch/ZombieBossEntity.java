@@ -1,4 +1,4 @@
-package org.example.dmytrok.dkentityplugin.zombiebossMonarch;
+package org.example.dmytrok.dkentityplugin.bosses.zombiebossMonarch;
 
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
@@ -15,17 +15,18 @@ public class ZombieBossEntity {
 
         zombieBoss.setFireTicks(0);
         zombieBoss.setRemoveWhenFarAway(false);
-        zombieBoss.setSilent(true);
+        zombieBoss.setSilent(true); //todo add custom sound
         zombieBoss.setBaby(false);
         zombieBoss.setCanPickupItems(false);
-
-
 
         zombieBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(400);
         zombieBoss.setHealth(400);
 
         zombieBoss.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(40);
         zombieBoss.damage(40);
+
+        zombieBoss.getEquipment().setItemInMainHand(null);
+        zombieBoss.getEquipment().setItemInOffHand(null);
 
 
         return zombieBoss;

@@ -1,4 +1,4 @@
-package org.example.dmytrok.dkentityplugin.blazebossFireElementKing;
+package org.example.dmytrok.dkentityplugin.bosses.blazebossFireElementKing;
 
 import org.bukkit.Location;
 import org.bukkit.command.Command;

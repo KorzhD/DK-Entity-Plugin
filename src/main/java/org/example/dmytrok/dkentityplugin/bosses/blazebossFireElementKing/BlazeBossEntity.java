@@ -1,6 +1,5 @@
-package org.example.dmytrok.dkentityplugin.blazebossFireElementKing;
+package org.example.dmytrok.dkentityplugin.bosses.blazebossFireElementKing;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
@@ -16,8 +15,7 @@ public class BlazeBossEntity {
 
         blazeBoss.setCustomName("§l§cFire Element King");
         blazeBoss.setRemoveWhenFarAway(false);
-        blazeBoss.setSilent(true);
-        blazeBoss.setGlowing(true);
+        blazeBoss.setSilent(true); //todo add custom sound
 
             blazeBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(600);
             blazeBoss.setHealth(600);

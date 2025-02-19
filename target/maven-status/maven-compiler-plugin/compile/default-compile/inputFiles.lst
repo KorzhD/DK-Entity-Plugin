@@ -1,7 +1,9 @@
-C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\blazebossFireElementKing\BlazeBossEvent.java
-C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\zombiebossMonarch\ZombieBossEvent.java
-C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\zombiebossMonarch\ZombieBossEntity.java
+C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\bosses\blazebossFireElementKing\BlazeBossCommand.java
+C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\bosses\zombiebossMonarch\ZombieBossCommand.java
 C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\DK_Entity_Plugin.java
-C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\zombiebossMonarch\ZombieBossCommand.java
-C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\blazebossFireElementKing\BlazeBossCommand.java
-C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\blazebossFireElementKing\BlazeBossEntity.java
+C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\items\swordBossKiller\BossKillerSword.java
+C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\bosses\blazebossFireElementKing\BlazeBossEntity.java
+C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\bosses\zombiebossMonarch\ZombieBossEvent.java
+C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\items\swordBossKiller\BossKillerSwordCommand.java
+C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\bosses\blazebossFireElementKing\BlazeBossEvent.java
+C:\Users\Admin\IdeaProjects\DK-EntityTest-Plugin\src\main\java\org\example\dmytrok\dkentityplugin\bosses\zombiebossMonarch\ZombieBossEntity.java

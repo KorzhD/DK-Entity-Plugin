@@ -1,5 +1,6 @@
-package org.example.dmytrok.dkentityplugin.zombiebossMonarch;
+package org.example.dmytrok.dkentityplugin.bosses.zombiebossMonarch;
 
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,6 +18,11 @@ public class ZombieBossCommand implements CommandExecutor {
 
         if(!(player.hasPermission("zombieBoss.admin"))) {
             commandSender.sendMessage("You must be an admin");
+            return false;
+        }
+        Location location = player.getLocation();
+        if(location == null || location.getWorld() == null) {
+            commandSender.sendMessage("Error: Zombie Boss can't be spawned in this place!");
             return false;
         }
 
