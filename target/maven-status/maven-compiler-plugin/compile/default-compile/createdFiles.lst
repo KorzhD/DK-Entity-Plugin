@@ -1,0 +1,7 @@
+org\example\dmytrok\dkentityplugin\blazebossFireElementKing\BlazeBossEntity.class
+org\example\dmytrok\dkentityplugin\DK_Entity_Plugin.class
+org\example\dmytrok\dkentityplugin\zombiebossMonarch\ZombieBossCommand.class
+org\example\dmytrok\dkentityplugin\zombiebossMonarch\ZombieBossEvent.class
+org\example\dmytrok\dkentityplugin\blazebossFireElementKing\BlazeBossEvent.class
+org\example\dmytrok\dkentityplugin\blazebossFireElementKing\BlazeBossCommand.class
+org\example\dmytrok\dkentityplugin\zombiebossMonarch\ZombieBossEntity.class
