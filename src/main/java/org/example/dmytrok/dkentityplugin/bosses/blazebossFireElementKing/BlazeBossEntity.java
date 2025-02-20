@@ -28,7 +28,6 @@ public class BlazeBossEntity {
             blazeBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(600);
             blazeBoss.setHealth(600);
             blazeBoss.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(60);
-            blazeBoss.damage(60);
 
 
 

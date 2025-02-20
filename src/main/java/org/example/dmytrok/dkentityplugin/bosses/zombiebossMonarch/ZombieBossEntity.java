@@ -32,7 +32,6 @@ public class ZombieBossEntity {
         zombieBoss.setHealth(400);
 
         zombieBoss.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(40);
-        zombieBoss.damage(40);
 
         zombieBoss.getEquipment().setItemInMainHand(null);
         zombieBoss.getEquipment().setItemInOffHand(null);

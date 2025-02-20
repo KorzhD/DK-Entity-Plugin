@@ -2,6 +2,7 @@ package org.example.dmytrok.dkentityplugin.bosses.zombiebossMonarch;
 
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.block.Block;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -77,14 +78,23 @@ public class ZombieBossEvent implements Listener {
         Location location = event.getEntity().getLocation();
 
         world.spawnParticle(Particle.DRAGON_BREATH, location, 20);
+        Zombie zombieBoss = (Zombie) event.getEntity();
 
-        Zombie ZombieBoss = (Zombie) event.getEntity();
+        Random random = new Random();
+        int x = location.getBlockX() + random.nextInt(4);
+        int y = location.getBlockY();
+        int z = location.getBlockZ() + random.nextInt(4);
+        Location newLocation = new Location(world, x, y ,z);
+        if(newLocation.getBlock().getType().equals(Material.AIR)) {
+            zombieBoss.teleport(newLocation);
+        }
+
         BossBar bossBar = ZombieBossEntity.getZombieBossBar();
         if (bossBar != null) {
-            double health = ZombieBoss.getHealth() - event.getFinalDamage();
-            double maxHealth = ZombieBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
-            bossBar.setProgress(Math.max(0, health / maxHealth));
-
+            double maxHealth = zombieBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
+            double healthAfterDamage = zombieBoss.getHealth() - event.getFinalDamage();
+            healthAfterDamage = Math.max(0, healthAfterDamage);
+            bossBar.setProgress(healthAfterDamage / maxHealth);
         }
     }
 
