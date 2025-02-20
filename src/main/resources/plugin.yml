@@ -10,6 +10,10 @@ commands:
     description: Summon Blaze Boss
     usage: /blazeboss
     permission: blazeboss.admin
+  golemboss:
+    description: Summon Golem Boss
+    usage: /golemboss
+    permission: golemboss.admin
   bossKiller:
     description: Give you a Boss Killer
     usage: /bossKiller
@@ -19,6 +23,9 @@ permissions:
     description: Only admin can do it
     default: op
   blazeboss.admin:
+    description: Only admin can do it
+    default: op
+  golemboss.admin:
     description: Only admin can do it
     default: op
   bossKiller.admin:

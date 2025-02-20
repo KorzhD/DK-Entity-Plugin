@@ -1,6 +1,8 @@
 package org.example.dmytrok.dkentityplugin.bosses.zombiebossMonarch;
 
 import org.bukkit.*;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -9,6 +11,8 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.example.dmytrok.dkentityplugin.DK_Entity_Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,12 +56,16 @@ public class ZombieBossEvent implements Listener {
         ItemStack emeralds = new ItemStack(Material.EMERALD, 10);
         ItemStack gold = new ItemStack(Material.GOLD_INGOT, 10);
 
-        for (Player player : world.getPlayers()) {
-            player.sendMessage("§5Monarch of Death did not please Death..!");
-        }
+            Bukkit.broadcastMessage("§5Monarch of Death - did not please Death..!");
+
         world.dropItem(location, diamond);
         world.dropItem(location, emeralds);
         world.dropItem(location, gold);
+
+        if (ZombieBossEntity.getZombieBossBar() != null) {
+            ZombieBossEntity.getZombieBossBar().removeAll();
+            ZombieBossEntity.getZombieBossBar().setVisible(false);
+        }
     }
 
     @EventHandler
@@ -69,6 +77,15 @@ public class ZombieBossEvent implements Listener {
         Location location = event.getEntity().getLocation();
 
         world.spawnParticle(Particle.DRAGON_BREATH, location, 20);
+
+        Zombie ZombieBoss = (Zombie) event.getEntity();
+        BossBar bossBar = ZombieBossEntity.getZombieBossBar();
+        if (bossBar != null) {
+            double health = ZombieBoss.getHealth() - event.getFinalDamage();
+            double maxHealth = ZombieBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
+            bossBar.setProgress(Math.max(0, health / maxHealth));
+
+        }
     }
 
     @EventHandler
@@ -76,12 +93,16 @@ public class ZombieBossEvent implements Listener {
         if (!isMonarch(event.getDamager())) {
             return;
         }
-        if (!(event.getEntity() instanceof Player)) {
-            return;
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            Location tpPlayerLoc = player.getLocation().add(0, 5, 0);
+            player.teleport(tpPlayerLoc);
+        } else {
+            Entity entity = event.getEntity();
+            Location tpEntityLoc = entity.getLocation().add(0, 5, 0);
+            entity.teleport(tpEntityLoc);
         }
-        Player player = (Player) event.getEntity();
-        Location tpPlayerLoc = player.getLocation().add(0, 5, 0);
-        player.teleport(tpPlayerLoc);
+
     }
 
 

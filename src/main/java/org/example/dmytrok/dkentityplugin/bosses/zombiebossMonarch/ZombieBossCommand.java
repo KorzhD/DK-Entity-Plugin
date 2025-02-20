@@ -1,5 +1,6 @@
 package org.example.dmytrok.dkentityplugin.bosses.zombiebossMonarch;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -27,7 +28,7 @@ public class ZombieBossCommand implements CommandExecutor {
         }
 
          ZombieBossEntity.summonZombieBoss(player.getLocation());
-        player.sendMessage("§5Monarch of Death has arrived..!");
+        Bukkit.broadcastMessage("§5Monarch of Death has arrived..!");
         return true;
     }
 }
