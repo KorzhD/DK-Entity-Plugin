@@ -40,6 +40,9 @@ public class ZombieBossEntity {
         zombieBoss.getEquipment().setChestplate(null);
         zombieBoss.getEquipment().setHelmet(null);
 
+        if(zombieBoss.getVehicle() != null) {
+                zombieBoss.getVehicle().remove();
+        }
         zombieBossBar = Bukkit.createBossBar("§l§5{ Monarch }", BarColor.PURPLE, BarStyle.SOLID);
         zombieBossBar.setProgress(1.0);
         zombieBossBar.setVisible(true);

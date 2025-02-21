@@ -34,6 +34,8 @@ public class GolemBossEntity {
 
         golemBoss.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.25);
 
+        golemBoss.getAttribute(Attribute.GENERIC_FOLLOW_RANGE).setBaseValue(100);
+
         golemBoss.getEquipment().setItemInMainHand(null);
 
         golemBossBar = Bukkit.createBossBar("§l§b❄ Guardian of Cold Lands ❄", BarColor.BLUE, BarStyle.SOLID);
