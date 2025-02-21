@@ -14,11 +14,13 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.example.dmytrok.dkentityplugin.DK_Entity_Plugin;
+import org.example.dmytrok.dkentityplugin.utils.BossDefeatMenu;
 
-import java.util.Random;
+import java.util.*;
 
 public class GolemBossEvent implements Listener {
 
+    private HashMap<Player, Double> damagerPlayers = new HashMap<>();
     private ItemStack pHelmet;
 
     @EventHandler
@@ -33,27 +35,49 @@ public class GolemBossEvent implements Listener {
 
         //Boss
         Random random = new Random();
-        int dropChance = random.nextInt(500);
-        if(dropChance == 1) {
+        int dropChance = random.nextInt(1000);
+        if (dropChance == 1) {
         }
         //Drop
 
+        ItemStack[] itemStacks = new ItemStack[]{new ItemStack(Material.DIAMOND, 60),
+                new ItemStack(Material.EMERALD, 60),
+                new ItemStack(Material.GOLD_INGOT, 60)
+        };
 
-        ItemStack diamond = new ItemStack(Material.DIAMOND, 60);
-        ItemStack emeralds = new ItemStack(Material.EMERALD, 60);
-        ItemStack gold = new ItemStack(Material.GOLD_INGOT, 60);
+        List<ItemStack> loot = getLootList(itemStacks);
+        BossDefeatMenu.bossInventory(damagerPlayers, loot);
 
         Bukkit.broadcastMessage("§bYou missed the feeling of warmth so much..");
 
-        world.dropItem(location, diamond);
-        world.dropItem(location, emeralds);
-        world.dropItem(location, gold);
 
         if (GolemBossEntity.getGolemBossBar() != null) {
             GolemBossEntity.getGolemBossBar().removeAll();
             GolemBossEntity.getGolemBossBar().setVisible(false);
         }
+        damagerPlayers.clear();
 
+    }
+
+    @EventHandler
+    public void onPlayerAttackGOCL(EntityDamageByEntityEvent event) {
+        if (!(isGOCL(event.getEntity()))) {
+            return;
+        }
+        if (!(event.getDamager() instanceof Player)) {
+           return;
+        }
+
+        Player attacker = (Player) event.getDamager();
+        double damage = event.getDamage();
+
+        if(!damagerPlayers.containsKey(attacker)) {
+            damagerPlayers.put(attacker, damage);
+        } else {
+            double playersDamage = damagerPlayers.get(attacker);
+            playersDamage = playersDamage + damage;
+            damagerPlayers.put(attacker, damage);
+        }
     }
 
     @EventHandler
@@ -61,7 +85,6 @@ public class GolemBossEvent implements Listener {
         if (!(isGOCL(event.getEntity()))) {
             return;
         }
-
         World world = event.getEntity().getWorld();
         Location location = event.getEntity().getLocation();
         int x = location.getBlockX();
@@ -84,7 +107,6 @@ public class GolemBossEvent implements Listener {
             double health = golemBoss.getHealth() - event.getFinalDamage();
             double maxHealth = golemBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
             bossBar.setProgress(Math.max(0, health / maxHealth));
-
         }
     }
 
@@ -127,10 +149,10 @@ public class GolemBossEvent implements Listener {
 
     @EventHandler
     public void onWeakPlaceWasHit(EntityDamageByEntityEvent event) {
-        if(!isGOCLWeakPlace(event.getEntity())) {
+        if (!isGOCLWeakPlace(event.getEntity())) {
             return;
         }
-        if(event.getDamager() instanceof Player) {
+        if (event.getDamager() instanceof Player) {
             Player player = (Player) event.getDamager();
             Bukkit.broadcastMessage("§b" + player.getName() + " hit Guardian of Cold Land -§c weak place!");
             IronGolem boss = GolemBossEntity.getGolemBoss();
@@ -186,13 +208,19 @@ public class GolemBossEvent implements Listener {
     }
 
     private boolean isGOCLWeakPlace(Entity entity) {
-        if(!(entity.getType().equals(EntityType.ARMOR_STAND))) {
+        if (!(entity.getType().equals(EntityType.ARMOR_STAND))) {
             return false;
         }
         ArmorStand armorStand = (ArmorStand) entity;
-        if(!(armorStand.getCustomName().equals("Weak Place"))) {
+        if (!(armorStand.getCustomName().equals("Weak Place"))) {
             return false;
         }
         return true;
+    }
+
+    private List<ItemStack> getLootList(ItemStack[] itemStacks) {
+        List<ItemStack> loot = new ArrayList<>();
+        loot.addAll(Arrays.asList(itemStacks));
+        return loot;
     }
 }

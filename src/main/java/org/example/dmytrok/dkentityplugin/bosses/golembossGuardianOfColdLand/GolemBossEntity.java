@@ -2,12 +2,14 @@ package org.example.dmytrok.dkentityplugin.bosses.golembossGuardianOfColdLand;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.*;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 import org.example.dmytrok.dkentityplugin.DK_Entity_Plugin;
@@ -36,7 +38,8 @@ public class GolemBossEntity {
 
         golemBoss.getAttribute(Attribute.GENERIC_FOLLOW_RANGE).setBaseValue(100);
 
-        golemBoss.getEquipment().setItemInMainHand(null);
+        ItemStack nothing = new ItemStack(Material.AIR);
+        golemBoss.getEquipment().setItemInMainHand(nothing);
 
         golemBossBar = Bukkit.createBossBar("§l§b❄ Guardian of Cold Lands ❄", BarColor.BLUE, BarStyle.SOLID);
         golemBossBar.setProgress(1.0);

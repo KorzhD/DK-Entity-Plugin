@@ -2,7 +2,6 @@ package org.example.dmytrok.dkentityplugin.bosses.zombiebossMonarch;
 
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.block.Block;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -11,15 +10,13 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.example.dmytrok.dkentityplugin.DK_Entity_Plugin;
+import org.example.dmytrok.dkentityplugin.utils.BossDefeatMenu;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class ZombieBossEvent implements Listener {
+
+    private HashMap<Player, Double> damagerPlayers = new HashMap<>();
 
     @EventHandler
     public void onMonarchDeath(EntityDeathEvent event) {
@@ -38,20 +35,43 @@ public class ZombieBossEvent implements Listener {
         }
         //Drop
 
+        ItemStack[] itemStacks = new ItemStack[]{new ItemStack(Material.DIAMOND, 10),
+                new ItemStack(Material.EMERALD, 10),
+                new ItemStack(Material.GOLD_INGOT, 10)
+        };
 
-        ItemStack diamond = new ItemStack(Material.DIAMOND, 10);
-        ItemStack emeralds = new ItemStack(Material.EMERALD, 10);
-        ItemStack gold = new ItemStack(Material.GOLD_INGOT, 10);
+        List<ItemStack> loot = getLootList(itemStacks);
 
-            Bukkit.broadcastMessage("§5Monarch of Death - did not please Death..!");
+        BossDefeatMenu.bossInventory(damagerPlayers, loot);
 
-        world.dropItem(location, diamond);
-        world.dropItem(location, emeralds);
-        world.dropItem(location, gold);
+
+        Bukkit.broadcastMessage("§5Monarch of Death - did not please Death..!");
 
         if (ZombieBossEntity.getZombieBossBar() != null) {
             ZombieBossEntity.getZombieBossBar().removeAll();
             ZombieBossEntity.getZombieBossBar().setVisible(false);
+        }
+        damagerPlayers.clear();
+    }
+
+    @EventHandler
+    public void onPlayerAttackMonarch(EntityDamageByEntityEvent event) {
+        if (!(isMonarch(event.getEntity()))) {
+            return;
+        }
+        if (!(event.getDamager() instanceof Player)) {
+            return;
+        }
+
+        Player attacker = (Player) event.getDamager();
+        double damage = event.getDamage();
+
+        if(!damagerPlayers.containsKey(attacker)) {
+            damagerPlayers.put(attacker, damage);
+        } else {
+            double playersDamage = damagerPlayers.get(attacker);
+            playersDamage = playersDamage + damage;
+            damagerPlayers.put(attacker, damage);
         }
     }
 
@@ -112,5 +132,11 @@ public class ZombieBossEvent implements Listener {
             return false;
         }
         return true;
+    }
+
+    private List<ItemStack> getLootList(ItemStack[] itemStacks) {
+        List<ItemStack> loot = new ArrayList<>();
+        loot.addAll(Arrays.asList(itemStacks));
+        return loot;
     }
 }

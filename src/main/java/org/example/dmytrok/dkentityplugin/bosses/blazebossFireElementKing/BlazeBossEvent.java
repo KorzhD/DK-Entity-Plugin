@@ -14,13 +14,14 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.example.dmytrok.dkentityplugin.bosses.golembossGuardianOfColdLand.GolemBossEntity;
+import org.example.dmytrok.dkentityplugin.utils.BossDefeatMenu;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class BlazeBossEvent implements Listener {
+
+    private HashMap<Player, Double> damagerPlayers = new HashMap<>();
 
     @EventHandler
     public void onFEKDeath(EntityDeathEvent event) {
@@ -40,39 +41,70 @@ public class BlazeBossEvent implements Listener {
         }
         //Drop
 
-        ItemStack diamond = new ItemStack(Material.DIAMOND, 30);
-        ItemStack emeralds = new ItemStack(Material.EMERALD, 30);
-        ItemStack gold = new ItemStack(Material.GOLD_INGOT, 30);
+        ItemStack[] itemStacks = new ItemStack[]{new ItemStack(Material.DIAMOND, 30),
+                new ItemStack(Material.EMERALD, 30),
+                new ItemStack(Material.GOLD_INGOT, 30)
+        };
+
+        List<ItemStack> loot = getLootList(itemStacks);
+        BossDefeatMenu.bossInventory(damagerPlayers, loot);
 
 
         Bukkit.broadcastMessage("§cFire Element King - extinguished!");
-
-        world.dropItem(location, diamond);
-        world.dropItem(location, emeralds);
-        world.dropItem(location, gold);
 
         if (BlazeBossEntity.getBlazeBossBar() != null) {
             BlazeBossEntity.getBlazeBossBar().removeAll();
             BlazeBossEntity.getBlazeBossBar().setVisible(false);
         }
+
+        damagerPlayers.clear();
     }
+
+    @EventHandler
+    public void onPlayerAttackFEK(EntityDamageByEntityEvent event) {
+        if (!(isFireElementKing(event.getEntity()))) {
+            return;
+        }
+        if (!(event.getDamager() instanceof Player)) {
+            return;
+        }
+
+        Player attacker = (Player) event.getDamager();
+        double damage = event.getDamage();
+
+        if(!damagerPlayers.containsKey(attacker)) {
+            damagerPlayers.put(attacker, damage);
+        } else {
+            double playersDamage = damagerPlayers.get(attacker);
+            playersDamage = playersDamage + damage;
+            damagerPlayers.put(attacker, damage);
+        }
+    }
+
     @EventHandler
     public void onPlayerAttackFEK(EntityDamageEvent event) {
         if (!isFireElementKing(event.getEntity())) {
             return;
         }
+
+        Blaze blazeBoss = (Blaze) event.getEntity();
+        BossBar bossBar = BlazeBossEntity.getBlazeBossBar();
+
+        if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION ||
+                event.getCause() == EntityDamageEvent.DamageCause.BLOCK_EXPLOSION) {
+            event.setCancelled(true);
+            if (bossBar != null) {
+                bossBar.setProgress(blazeBoss.getHealth());
+            }
+        }
         World world = event.getEntity().getWorld();
         Location location = event.getEntity().getLocation();
 
         world.spawnParticle(Particle.FLAME, location, 20);
-
-        Blaze blazeBoss = (Blaze) event.getEntity();
-        BossBar bossBar = BlazeBossEntity.getBlazeBossBar();
         if (bossBar != null) {
             double health = blazeBoss.getHealth() - event.getFinalDamage();
             double maxHealth = blazeBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
             bossBar.setProgress(Math.max(0, health / maxHealth));
-
         }
     }
 
@@ -94,6 +126,7 @@ public class BlazeBossEvent implements Listener {
         }
 
     }
+
     @EventHandler
     public void onFEKAttackPlayer2(ProjectileHitEvent event) {
         Projectile FEKProjectile = event.getEntity();
@@ -116,6 +149,7 @@ public class BlazeBossEvent implements Listener {
         }
 
     }
+
     @EventHandler
     public void onFEKHitBlock(ProjectileHitEvent event) {
         Projectile FEKProjectile = event.getEntity();
@@ -131,15 +165,20 @@ public class BlazeBossEvent implements Listener {
         world.createExplosion(blockLocation.getBlockX(), blockLocation.getBlockY(), blockLocation.getBlockZ(), 10, false, false);
     }
 
-    
+
     private boolean isFireElementKing(Entity entity) {
         if (!(entity.getType().equals(EntityType.BLAZE))) {
             return false;
         }
         Blaze blaze = (Blaze) entity;
-        if (!(blaze.getCustomName().equals("§l§cFire Element King"))){
+        if (!(blaze.getCustomName().equals("§l§cFire Element King"))) {
             return false;
         }
         return true;
+    }
+    private List<ItemStack> getLootList(ItemStack[] itemStacks) {
+        List<ItemStack> loot = new ArrayList<>();
+        loot.addAll(Arrays.asList(itemStacks));
+        return loot;
     }
 }

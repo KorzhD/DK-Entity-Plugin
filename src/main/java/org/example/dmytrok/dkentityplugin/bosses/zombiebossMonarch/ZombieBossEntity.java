@@ -3,6 +3,7 @@ package org.example.dmytrok.dkentityplugin.bosses.zombiebossMonarch;
 import org.apache.commons.lang.ObjectUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
@@ -10,6 +11,7 @@ import org.bukkit.boss.BossBar;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
+import org.bukkit.inventory.ItemStack;
 
 
 public class ZombieBossEntity {
@@ -33,16 +35,18 @@ public class ZombieBossEntity {
 
         zombieBoss.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(40);
 
-        zombieBoss.getEquipment().setItemInMainHand(null);
-        zombieBoss.getEquipment().setItemInOffHand(null);
-        zombieBoss.getEquipment().setBoots(null);
-        zombieBoss.getEquipment().setLeggings(null);
-        zombieBoss.getEquipment().setChestplate(null);
-        zombieBoss.getEquipment().setHelmet(null);
+        ItemStack nothing = new ItemStack(Material.AIR);
+        zombieBoss.getEquipment().setItemInMainHand(nothing);
+        zombieBoss.getEquipment().setItemInOffHand(nothing);
+        zombieBoss.getEquipment().setBoots(nothing);
+        zombieBoss.getEquipment().setLeggings(nothing);
+        zombieBoss.getEquipment().setChestplate(nothing);
+        zombieBoss.getEquipment().setHelmet(nothing);
 
         if(zombieBoss.getVehicle() != null) {
                 zombieBoss.getVehicle().remove();
         }
+
         zombieBossBar = Bukkit.createBossBar("§l§5{ Monarch }", BarColor.PURPLE, BarStyle.SOLID);
         zombieBossBar.setProgress(1.0);
         zombieBossBar.setVisible(true);

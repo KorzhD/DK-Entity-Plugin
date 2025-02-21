@@ -1,6 +1,7 @@
 org\example\dmytrok\dkentityplugin\bosses\zombiebossMonarch\ZombieBossCommand.class
 org\example\dmytrok\dkentityplugin\bosses\golembossGuardianOfColdLand\GolemBossEntity.class
 org\example\dmytrok\dkentityplugin\bosses\zombiebossMonarch\ZombieBossEntity.class
+org\example\dmytrok\dkentityplugin\utils\BossDefeatMenu.class
 org\example\dmytrok\dkentityplugin\bosses\zombiebossMonarch\ZombieBossEvent.class
 org\example\dmytrok\dkentityplugin\bosses\blazebossFireElementKing\BlazeBossEntity.class
 org\example\dmytrok\dkentityplugin\bosses\blazebossFireElementKing\BlazeBossCommand.class
