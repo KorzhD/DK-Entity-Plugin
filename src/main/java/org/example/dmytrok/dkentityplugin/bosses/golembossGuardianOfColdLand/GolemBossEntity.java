@@ -32,7 +32,7 @@ public class GolemBossEntity {
         golemBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(800);
         golemBoss.setHealth(800);
 
-        golemBoss.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.18);
+        golemBoss.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.25);
 
         golemBoss.getEquipment().setItemInMainHand(null);
 

@@ -31,26 +31,12 @@ public class ZombieBossEvent implements Listener {
         world.playSound(location, Sound.ENTITY_ENDERDRAGON_DEATH, 0.5f, 50);
         event.getDrops().clear();
 
-        //Grave
-
+        //Boss
         Random random = new Random();
-        int graveBreakerChance = random.nextInt(500);
-        if(graveBreakerChance == 1) {
-            ItemStack monarchDrop = new ItemStack(Material.GOLD_AXE, 1);
-            ItemMeta monarchDropGraveBreaker = monarchDrop.getItemMeta();
-
-            List<String> list = new ArrayList<>();
-            list.add("§4Nightmare of Graveyards....");
-
-            monarchDropGraveBreaker.setDisplayName("Grave Breaker");
-            monarchDropGraveBreaker.setLore(list);
-            monarchDropGraveBreaker.setUnbreakable(true);
-            monarchDrop.setItemMeta(monarchDropGraveBreaker);
-
-            world.dropItem(location, monarchDrop);
+        int dropChance = random.nextInt(500);
+        if(dropChance == 1) {
         }
-
-        //Breaker
+        //Drop
 
 
         ItemStack diamond = new ItemStack(Material.DIAMOND, 10);

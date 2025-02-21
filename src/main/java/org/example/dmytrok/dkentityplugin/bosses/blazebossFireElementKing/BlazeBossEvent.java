@@ -33,25 +33,12 @@ public class BlazeBossEvent implements Listener {
         event.getDrops().clear();
 
 
-        //Magic
-
+        //Boss
         Random random = new Random();
-        int magicWandChance = random.nextInt(1000);
-        if (magicWandChance == 1) {
-            ItemStack FEKDrop = new ItemStack(Material.WOOD_AXE, 1);
-            ItemMeta FEKDropMagicWand = FEKDrop.getItemMeta();
-
-            List<String> list = new ArrayList<>();
-            list.add("§6The most powerful thing in the World!");
-
-                FEKDropMagicWand.setDisplayName("Magic Wand");
-                FEKDropMagicWand.setLore(list);
-                FEKDropMagicWand.addEnchant(Enchantment.VANISHING_CURSE, 1, true);
-                FEKDropMagicWand.setUnbreakable(true);
-                FEKDrop.setItemMeta(FEKDropMagicWand);
+        int dropChance = random.nextInt(1000);
+        if (dropChance == 1) {
         }
-
-        //Wand
+        //Drop
 
         ItemStack diamond = new ItemStack(Material.DIAMOND, 30);
         ItemStack emeralds = new ItemStack(Material.EMERALD, 30);

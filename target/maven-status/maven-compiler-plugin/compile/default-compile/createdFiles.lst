@@ -12,4 +12,3 @@ org\example\dmytrok\dkentityplugin\bosses\golembossGuardianOfColdLand\GolemBossE
 org\example\dmytrok\dkentityplugin\items\swordBossKiller\BossKillerSword.class
 org\example\dmytrok\dkentityplugin\bosses\golembossGuardianOfColdLand\GolemBossCommand.class
 org\example\dmytrok\dkentityplugin\bosses\golembossGuardianOfColdLand\GolemBossEvent.class
-org\example\dmytrok\dkentityplugin\utils\VisibleBossBars.class

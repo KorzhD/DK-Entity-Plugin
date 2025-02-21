@@ -15,6 +15,8 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.example.dmytrok.dkentityplugin.DK_Entity_Plugin;
 
+import java.util.Random;
+
 public class GolemBossEvent implements Listener {
 
     private ItemStack pHelmet;
@@ -29,9 +31,12 @@ public class GolemBossEvent implements Listener {
         world.playSound(location, Sound.ENTITY_ENDERDRAGON_DEATH, 0.5f, 50);
         event.getDrops().clear();
 
-        //ITEM
-
-        //DROP
+        //Boss
+        Random random = new Random();
+        int dropChance = random.nextInt(500);
+        if(dropChance == 1) {
+        }
+        //Drop
 
 
         ItemStack diamond = new ItemStack(Material.DIAMOND, 60);
@@ -113,9 +118,9 @@ public class GolemBossEvent implements Listener {
             player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 100, 1, false, false));
 
 
-            event.setDamage(50);
+            event.setDamage(80);
         } else {
-            event.setDamage(50);
+            event.setDamage(80);
         }
 
     }
