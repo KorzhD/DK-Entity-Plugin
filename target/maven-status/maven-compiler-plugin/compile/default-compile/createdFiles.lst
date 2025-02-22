@@ -1,4 +1,5 @@
 org\example\dmytrok\dkentityplugin\bosses\zombiebossMonarch\ZombieBossCommand.class
+org\example\dmytrok\dkentityplugin\utils\CongratulationTitle$1.class
 org\example\dmytrok\dkentityplugin\bosses\golembossGuardianOfColdLand\GolemBossEntity.class
 org\example\dmytrok\dkentityplugin\bosses\zombiebossMonarch\ZombieBossEntity.class
 org\example\dmytrok\dkentityplugin\utils\BossDefeatMenu.class
@@ -8,9 +9,11 @@ org\example\dmytrok\dkentityplugin\bosses\blazebossFireElementKing\BlazeBossComm
 org\example\dmytrok\dkentityplugin\bosses\blazebossFireElementKing\BlazeBossEvent.class
 org\example\dmytrok\dkentityplugin\bosses\golembossGuardianOfColdLand\GolemBossEntity$1.class
 org\example\dmytrok\dkentityplugin\items\swordBossKiller\BossKillerSwordCommand.class
+org\example\dmytrok\dkentityplugin\utils\CongratulationTitle.class
 org\example\dmytrok\dkentityplugin\DK_Entity_Plugin.class
 org\example\dmytrok\dkentityplugin\bosses\golembossGuardianOfColdLand\GolemBossEvent$1.class
 org\example\dmytrok\dkentityplugin\items\swordBossKiller\BossKillerSword.class
 org\example\dmytrok\dkentityplugin\bosses\golembossGuardianOfColdLand\GolemBossCommand.class
 org\example\dmytrok\dkentityplugin\bosses\golembossGuardianOfColdLand\GolemBossEvent.class
 org\example\dmytrok\dkentityplugin\utils\LastDropCommand.class
+org\example\dmytrok\dkentityplugin\utils\BossDefeatMenu$1.class

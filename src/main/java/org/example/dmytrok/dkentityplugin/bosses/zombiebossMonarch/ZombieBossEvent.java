@@ -11,6 +11,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.example.dmytrok.dkentityplugin.utils.BossDefeatMenu;
+import org.example.dmytrok.dkentityplugin.utils.CongratulationTitle;
 
 import java.util.*;
 
@@ -53,6 +54,7 @@ public class ZombieBossEvent implements Listener {
             ZombieBossEntity.getZombieBossBar().removeAll();
             ZombieBossEntity.getZombieBossBar().setVisible(false);
         }
+        CongratulationTitle.displayCongratulation(damagerPlayers);
         damagerPlayers.clear();
     }
 

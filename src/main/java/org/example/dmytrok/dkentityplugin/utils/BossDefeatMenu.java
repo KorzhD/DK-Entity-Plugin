@@ -9,6 +9,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.example.dmytrok.dkentityplugin.DK_Entity_Plugin;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,9 +28,14 @@ public class BossDefeatMenu implements Listener {
             for (ItemStack item : loot) {
                 bossInventory.addItem(item);
             }
-            player.sendMessage("§aYou hit: " + Math.round(players.get(player)));
-            Inventory bossInventoryWB = addButtons(bossInventory);
-            player.openInventory(bossInventoryWB);
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    Inventory bossInventoryWB = addButtons(bossInventory);
+                    player.openInventory(bossInventoryWB);
+
+                }
+            }.runTaskLater(DK_Entity_Plugin.getInstance(),  120L);
 
         }
     }
@@ -64,8 +71,6 @@ public class BossDefeatMenu implements Listener {
             return;
         }
 
-        ItemStack redDye = new ItemStack(Material.REDSTONE_BLOCK, 1);
-        ItemStack limeDye = new ItemStack(Material.EMERALD_BLOCK, 1);
 
         if (clickedItem.getType().equals(Material.REDSTONE_BLOCK) && clickedItem.getItemMeta().getDisplayName().equals("§cDecline")) {
             player.closeInventory();

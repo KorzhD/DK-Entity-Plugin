@@ -3,7 +3,6 @@ package org.example.dmytrok.dkentityplugin.bosses.blazebossFireElementKing;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.boss.BossBar;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,9 +11,8 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.example.dmytrok.dkentityplugin.bosses.golembossGuardianOfColdLand.GolemBossEntity;
 import org.example.dmytrok.dkentityplugin.utils.BossDefeatMenu;
+import org.example.dmytrok.dkentityplugin.utils.CongratulationTitle;
 
 
 import java.util.*;
@@ -59,6 +57,7 @@ public class BlazeBossEvent implements Listener {
             BlazeBossEntity.getBlazeBossBar().setVisible(false);
         }
 
+        CongratulationTitle.displayCongratulation(damagerPlayers);
         damagerPlayers.clear();
     }
 

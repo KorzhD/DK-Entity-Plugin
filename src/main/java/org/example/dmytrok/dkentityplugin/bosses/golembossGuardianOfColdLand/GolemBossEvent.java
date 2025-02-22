@@ -15,6 +15,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.example.dmytrok.dkentityplugin.DK_Entity_Plugin;
 import org.example.dmytrok.dkentityplugin.utils.BossDefeatMenu;
+import org.example.dmytrok.dkentityplugin.utils.CongratulationTitle;
 
 import java.util.*;
 
@@ -58,6 +59,7 @@ public class GolemBossEvent implements Listener {
             GolemBossEntity.getGolemBossBar().removeAll();
             GolemBossEntity.getGolemBossBar().setVisible(false);
         }
+        CongratulationTitle.displayCongratulation(damagerPlayers);
         damagerPlayers.clear();
 
     }
