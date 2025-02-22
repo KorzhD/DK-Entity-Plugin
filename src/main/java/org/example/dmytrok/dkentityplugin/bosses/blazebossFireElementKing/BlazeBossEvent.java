@@ -35,6 +35,7 @@ public class BlazeBossEvent implements Listener {
 
 
         //Boss
+        ItemStack rareDrop = new ItemStack(Material.AIR);
         Random random = new Random();
         int dropChance = random.nextInt(1000);
         if (dropChance == 1) {
@@ -43,11 +44,12 @@ public class BlazeBossEvent implements Listener {
 
         ItemStack[] itemStacks = new ItemStack[]{new ItemStack(Material.DIAMOND, 30),
                 new ItemStack(Material.EMERALD, 30),
-                new ItemStack(Material.GOLD_INGOT, 30)
+                new ItemStack(Material.GOLD_INGOT, 30),
+                rareDrop
         };
 
         List<ItemStack> loot = getLootList(itemStacks);
-        BossDefeatMenu.bossInventory(damagerPlayers, loot);
+        BossDefeatMenu.setBossInventory(damagerPlayers, loot);
 
 
         Bukkit.broadcastMessage("§cFire Element King - extinguished!");
@@ -77,7 +79,7 @@ public class BlazeBossEvent implements Listener {
         } else {
             double playersDamage = damagerPlayers.get(attacker);
             playersDamage = playersDamage + damage;
-            damagerPlayers.put(attacker, damage);
+            damagerPlayers.put(attacker, playersDamage);
         }
     }
 

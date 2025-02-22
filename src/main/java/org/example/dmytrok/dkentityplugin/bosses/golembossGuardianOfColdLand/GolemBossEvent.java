@@ -34,19 +34,22 @@ public class GolemBossEvent implements Listener {
         event.getDrops().clear();
 
         //Boss
+        ItemStack rareDrop = new ItemStack(Material.AIR);
         Random random = new Random();
         int dropChance = random.nextInt(1000);
         if (dropChance == 1) {
+
         }
         //Drop
 
         ItemStack[] itemStacks = new ItemStack[]{new ItemStack(Material.DIAMOND, 60),
                 new ItemStack(Material.EMERALD, 60),
-                new ItemStack(Material.GOLD_INGOT, 60)
+                new ItemStack(Material.GOLD_INGOT, 60),
+                rareDrop
         };
 
         List<ItemStack> loot = getLootList(itemStacks);
-        BossDefeatMenu.bossInventory(damagerPlayers, loot);
+        BossDefeatMenu.setBossInventory(damagerPlayers, loot);
 
         Bukkit.broadcastMessage("§bYou missed the feeling of warmth so much..");
 
@@ -76,7 +79,7 @@ public class GolemBossEvent implements Listener {
         } else {
             double playersDamage = damagerPlayers.get(attacker);
             playersDamage = playersDamage + damage;
-            damagerPlayers.put(attacker, damage);
+            damagerPlayers.put(attacker, playersDamage);
         }
     }
 

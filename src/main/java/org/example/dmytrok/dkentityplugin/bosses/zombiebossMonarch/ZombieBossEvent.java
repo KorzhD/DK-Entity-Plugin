@@ -29,6 +29,7 @@ public class ZombieBossEvent implements Listener {
         event.getDrops().clear();
 
         //Boss
+        ItemStack rareDrop = new ItemStack(Material.AIR);
         Random random = new Random();
         int dropChance = random.nextInt(500);
         if(dropChance == 1) {
@@ -37,12 +38,13 @@ public class ZombieBossEvent implements Listener {
 
         ItemStack[] itemStacks = new ItemStack[]{new ItemStack(Material.DIAMOND, 10),
                 new ItemStack(Material.EMERALD, 10),
-                new ItemStack(Material.GOLD_INGOT, 10)
+                new ItemStack(Material.GOLD_INGOT, 10),
+                rareDrop
         };
 
         List<ItemStack> loot = getLootList(itemStacks);
 
-        BossDefeatMenu.bossInventory(damagerPlayers, loot);
+        BossDefeatMenu.setBossInventory(damagerPlayers, loot);
 
 
         Bukkit.broadcastMessage("§5Monarch of Death - did not please Death..!");
@@ -71,7 +73,7 @@ public class ZombieBossEvent implements Listener {
         } else {
             double playersDamage = damagerPlayers.get(attacker);
             playersDamage = playersDamage + damage;
-            damagerPlayers.put(attacker, damage);
+            damagerPlayers.put(attacker, playersDamage);
         }
     }
 

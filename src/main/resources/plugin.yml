@@ -18,6 +18,10 @@ commands:
     description: Give you a Boss Killer
     usage: /bossKiller
     permission: bossKiller.admin
+  lastdrop:
+    description: Will keep your last drop from boss if inventory was full
+    usage: /lastdrop
+    permission: lastdrop.user
 permissions:
   zombieboss.admin:
     description: Only admin can do it
@@ -31,3 +35,5 @@ permissions:
   bossKiller.admin:
     description: Only admin can do it
     default: op
+  lastdrop.user:
+    description: Players can do it

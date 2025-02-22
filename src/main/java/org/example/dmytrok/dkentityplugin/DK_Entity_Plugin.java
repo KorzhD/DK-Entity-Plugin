@@ -8,6 +8,8 @@ import org.example.dmytrok.dkentityplugin.bosses.golembossGuardianOfColdLand.Gol
 import org.example.dmytrok.dkentityplugin.items.swordBossKiller.BossKillerSwordCommand;
 import org.example.dmytrok.dkentityplugin.bosses.zombiebossMonarch.ZombieBossCommand;
 import org.example.dmytrok.dkentityplugin.bosses.zombiebossMonarch.ZombieBossEvent;
+import org.example.dmytrok.dkentityplugin.utils.BossDefeatMenu;
+import org.example.dmytrok.dkentityplugin.utils.LastDropCommand;
 
 public final class DK_Entity_Plugin extends JavaPlugin {
 
@@ -18,6 +20,7 @@ public final class DK_Entity_Plugin extends JavaPlugin {
         instance = this;
         getLogger().info("Entity Plugin enabled");
 
+        getServer().getPluginManager().registerEvents(new BossDefeatMenu(), this);
         getServer().getPluginManager().registerEvents(new ZombieBossEvent(), this);
         getServer().getPluginManager().registerEvents(new BlazeBossEvent(), this);
         getServer().getPluginManager().registerEvents(new GolemBossEvent(), this);
@@ -41,6 +44,11 @@ public final class DK_Entity_Plugin extends JavaPlugin {
 
         if(getCommand("bossKiller") != null) {
             getCommand("bossKiller").setExecutor(new BossKillerSwordCommand());
+        } else {
+            getLogger().info("Something WRONG");
+        }
+        if(getCommand("lastdrop") != null) {
+            getCommand("lastdrop").setExecutor(new LastDropCommand());
         } else {
             getLogger().info("Something WRONG");
         }
