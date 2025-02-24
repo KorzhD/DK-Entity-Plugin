@@ -14,6 +14,8 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.example.dmytrok.dkentityplugin.DK_Entity_Plugin;
+import org.example.dmytrok.dkentityplugin.LEVELSYSTEM.LevelSystem;
+import org.example.dmytrok.dkentityplugin.items.weapon.WeaponCreator;
 import org.example.dmytrok.dkentityplugin.utils.BossDefeatMenu;
 import org.example.dmytrok.dkentityplugin.utils.CongratulationTitle;
 
@@ -35,18 +37,25 @@ public class GolemBossEvent implements Listener {
         event.getDrops().clear();
 
         //Boss
-        ItemStack rareDrop = new ItemStack(Material.AIR);
         Random random = new Random();
+
+        ItemStack rareDrop = new ItemStack(Material.AIR);
         int dropChance = random.nextInt(1000);
         if (dropChance == 1) {
+            rareDrop = WeaponCreator.getFrostScythe();
+        }
 
+        ItemStack rareDrop2 = new ItemStack(Material.AIR);
+        int dropChance2 = random.nextInt(500);
+        if (dropChance == 1) {
+            rareDrop2 = WeaponCreator.getMoonlight();
         }
         //Drop
 
         ItemStack[] itemStacks = new ItemStack[]{new ItemStack(Material.DIAMOND, 60),
                 new ItemStack(Material.EMERALD, 60),
                 new ItemStack(Material.GOLD_INGOT, 60),
-                rareDrop
+                rareDrop, rareDrop2
         };
 
         List<ItemStack> loot = getLootList(itemStacks);
@@ -59,7 +68,13 @@ public class GolemBossEvent implements Listener {
             GolemBossEntity.getGolemBossBar().removeAll();
             GolemBossEntity.getGolemBossBar().setVisible(false);
         }
+
         CongratulationTitle.displayCongratulation(damagerPlayers);
+
+        for(Player player : damagerPlayers.keySet()) {
+            LevelSystem.addExp(player, 200);
+        }
+
         damagerPlayers.clear();
 
     }
@@ -166,7 +181,7 @@ public class GolemBossEvent implements Listener {
             location.getWorld().spawnParticle(Particle.TOTEM, location, 10);
             location.getWorld().playSound(location, Sound.ITEM_TOTEM_USE, 1f, 80);
             if (boss != null && !boss.isDead()) {
-                boss.damage(200.0);
+                boss.damage(400.0);
             }
             armorStand.remove();
         }

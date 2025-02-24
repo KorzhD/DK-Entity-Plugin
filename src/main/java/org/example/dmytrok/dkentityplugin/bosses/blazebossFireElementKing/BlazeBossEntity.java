@@ -25,8 +25,8 @@ public class BlazeBossEntity {
         blazeBoss.setRemoveWhenFarAway(false);
         blazeBoss.setSilent(true); //todo add custom sound
 
-            blazeBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(600);
-            blazeBoss.setHealth(600);
+            blazeBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(1200);
+            blazeBoss.setHealth(1200);
             blazeBoss.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(60);
 
 

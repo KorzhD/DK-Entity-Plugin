@@ -30,8 +30,8 @@ public class ZombieBossEntity {
         zombieBoss.setBaby(false);
         zombieBoss.setCanPickupItems(false);
 
-        zombieBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(400);
-        zombieBoss.setHealth(400);
+        zombieBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(800);
+        zombieBoss.setHealth(800);
 
         zombieBoss.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(40);
 

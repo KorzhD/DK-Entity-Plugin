@@ -1,9 +1,10 @@
-package org.example.dmytrok.dkentityplugin.items.swordBossKiller;
+package org.example.dmytrok.dkentityplugin.items.bossKiller;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.example.dmytrok.dkentityplugin.items.bossKiller.BossKillerSword;
 
 public class BossKillerSwordCommand implements CommandExecutor {
     @Override

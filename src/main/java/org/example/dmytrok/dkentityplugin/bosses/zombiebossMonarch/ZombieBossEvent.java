@@ -10,6 +10,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
+import org.example.dmytrok.dkentityplugin.LEVELSYSTEM.LevelSystem;
 import org.example.dmytrok.dkentityplugin.utils.BossDefeatMenu;
 import org.example.dmytrok.dkentityplugin.utils.CongratulationTitle;
 
@@ -55,6 +56,11 @@ public class ZombieBossEvent implements Listener {
             ZombieBossEntity.getZombieBossBar().setVisible(false);
         }
         CongratulationTitle.displayCongratulation(damagerPlayers);
+
+        for(Player player : damagerPlayers.keySet()) {
+            LevelSystem.addExp(player, 50);
+        }
+
         damagerPlayers.clear();
     }
 

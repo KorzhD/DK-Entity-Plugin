@@ -1,4 +1,4 @@
-package org.example.dmytrok.dkentityplugin.items.swordBossKiller;
+package org.example.dmytrok.dkentityplugin.items.bossKiller;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;

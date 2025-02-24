@@ -11,6 +11,8 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
+import org.example.dmytrok.dkentityplugin.LEVELSYSTEM.LevelSystem;
+import org.example.dmytrok.dkentityplugin.items.weapon.WeaponCreator;
 import org.example.dmytrok.dkentityplugin.utils.BossDefeatMenu;
 import org.example.dmytrok.dkentityplugin.utils.CongratulationTitle;
 
@@ -33,17 +35,24 @@ public class BlazeBossEvent implements Listener {
 
 
         //Boss
-        ItemStack rareDrop = new ItemStack(Material.AIR);
         Random random = new Random();
-        int dropChance = random.nextInt(1000);
+        ItemStack rareDrop = new ItemStack(Material.AIR);
+        int dropChance = random.nextInt(500);
         if (dropChance == 1) {
+            rareDrop = WeaponCreator.getDemonSlayer();
+        }
+
+        ItemStack rareDrop2 = new ItemStack(Material.AIR);
+        int dropChance2 = random.nextInt(100);
+        if (dropChance == 1) {
+            rareDrop2 = WeaponCreator.getDemonBlade();
         }
         //Drop
 
         ItemStack[] itemStacks = new ItemStack[]{new ItemStack(Material.DIAMOND, 30),
                 new ItemStack(Material.EMERALD, 30),
                 new ItemStack(Material.GOLD_INGOT, 30),
-                rareDrop
+                rareDrop, rareDrop2
         };
 
         List<ItemStack> loot = getLootList(itemStacks);
@@ -58,6 +67,9 @@ public class BlazeBossEvent implements Listener {
         }
 
         CongratulationTitle.displayCongratulation(damagerPlayers);
+        for(Player player : damagerPlayers.keySet()) {
+            LevelSystem.addExp(player, 100);
+        }
         damagerPlayers.clear();
     }
 

@@ -31,8 +31,8 @@ public class GolemBossEntity {
         golemBoss.setCanPickupItems(false);
         golemBoss.setPlayerCreated(false);
 
-        golemBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(800);
-        golemBoss.setHealth(800);
+        golemBoss.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(1600);
+        golemBoss.setHealth(1600);
 
         golemBoss.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.25);
 

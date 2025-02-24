@@ -5,11 +5,15 @@ import org.example.dmytrok.dkentityplugin.bosses.blazebossFireElementKing.BlazeB
 import org.example.dmytrok.dkentityplugin.bosses.blazebossFireElementKing.BlazeBossEvent;
 import org.example.dmytrok.dkentityplugin.bosses.golembossGuardianOfColdLand.GolemBossCommand;
 import org.example.dmytrok.dkentityplugin.bosses.golembossGuardianOfColdLand.GolemBossEvent;
-import org.example.dmytrok.dkentityplugin.items.swordBossKiller.BossKillerSwordCommand;
+import org.example.dmytrok.dkentityplugin.items.bossKiller.BossKillerSwordCommand;
 import org.example.dmytrok.dkentityplugin.bosses.zombiebossMonarch.ZombieBossCommand;
 import org.example.dmytrok.dkentityplugin.bosses.zombiebossMonarch.ZombieBossEvent;
+import org.example.dmytrok.dkentityplugin.items.weapon.DemonBlade;
+import org.example.dmytrok.dkentityplugin.items.weapon.FrostScythe;
+import org.example.dmytrok.dkentityplugin.items.weapon.LegendarySword;
 import org.example.dmytrok.dkentityplugin.utils.BossDefeatMenu;
 import org.example.dmytrok.dkentityplugin.utils.LastDropCommand;
+import org.example.dmytrok.dkentityplugin.LEVELSYSTEM.ScoreboardManager;
 
 public final class DK_Entity_Plugin extends JavaPlugin {
 
@@ -20,7 +24,16 @@ public final class DK_Entity_Plugin extends JavaPlugin {
         instance = this;
         getLogger().info("Entity Plugin enabled");
 
+
+        getServer().getPluginManager().registerEvents(new ScoreboardManager(), this);
         getServer().getPluginManager().registerEvents(new BossDefeatMenu(), this);
+
+        getServer().getPluginManager().registerEvents(new FrostScythe(), this);
+        getServer().getPluginManager().registerEvents(new DemonBlade(), this);
+        getServer().getPluginManager().registerEvents(new LegendarySword(), this);
+
+
+
         getServer().getPluginManager().registerEvents(new ZombieBossEvent(), this);
         getServer().getPluginManager().registerEvents(new BlazeBossEvent(), this);
         getServer().getPluginManager().registerEvents(new GolemBossEvent(), this);
