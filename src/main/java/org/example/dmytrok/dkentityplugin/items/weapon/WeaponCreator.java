@@ -79,14 +79,59 @@ public class WeaponCreator {
         legendarySwordMeta.setDisplayName("Legendary Sword");
         legendarySwordMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("§eLegends say that this sword has gone through many wars.\n" +
-                "§eAnd he won each one.");
+        lore.add("§eLegends say that this sword has gone through many wars.");
+        lore.add("§eAnd he won each one.");
         legendarySwordMeta.setLore(lore);
         legendarySwordMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
         legendarySwordMeta.addEnchant(Enchantment.DAMAGE_ALL, 5, true);
         legendarySword.setItemMeta(legendarySwordMeta);
         return legendarySword;
+    }
+
+    public static ItemStack getEpicSword() {
+        ItemStack epicSword = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta epicSwordMeta = epicSword.getItemMeta();
+        epicSwordMeta.setDisplayName("Epic Sword");
+        epicSwordMeta.setUnbreakable(true);
+        List<String> lore = new ArrayList<>();
+        lore.add("§7Skilled blacksmiths put their hand to this sword.");
+        epicSwordMeta.setLore(lore);
+        epicSwordMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+                ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
+        epicSwordMeta.addEnchant(Enchantment.DAMAGE_ALL, 2, true);
+        epicSword.setItemMeta(epicSwordMeta);
+        return epicSword;
+    }
+    public static ItemStack getMoltenSword() {
+        ItemStack moltenSword = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta moltenSwordMeta = moltenSword.getItemMeta();
+        moltenSwordMeta.setDisplayName("Molten Sword");
+        moltenSwordMeta.setUnbreakable(true);
+        List<String> lore = new ArrayList<>();
+        lore.add("§cFresh from §6the §eoven fire.");
+        moltenSwordMeta.setLore(lore);
+        moltenSwordMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+                ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
+        moltenSwordMeta.addEnchant(Enchantment.DAMAGE_ALL, 3, true);
+        moltenSwordMeta.addEnchant(Enchantment.FIRE_ASPECT, 2, true);
+        moltenSword.setItemMeta(moltenSwordMeta);
+        return moltenSword;
+    }
+    public static ItemStack getHeroSword() {
+        ItemStack heroSword = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta heroSwordMeta = heroSword.getItemMeta();
+        heroSwordMeta.setDisplayName("Hero Sword");
+        heroSwordMeta.setUnbreakable(true);
+        List<String> lore = new ArrayList<>();
+        lore.add("The Sword of Heroes was created in the midst of a great war,");
+        lore.add("where its owner was the last bastion in the defense of his people.");
+        heroSwordMeta.setLore(lore);
+        heroSwordMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+                ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
+        heroSwordMeta.addEnchant(Enchantment.DAMAGE_ALL, 4, true);
+        heroSword.setItemMeta(heroSwordMeta);
+        return heroSword;
     }
 
 

@@ -6,22 +6,18 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.EntityInteractEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.example.dmytrok.dkentityplugin.DK_Entity_Plugin;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FrostScythe implements Listener {
     private final Map<LivingEntity, ArmorStand[]> snowflakesMap = new HashMap<>();
     private final Map<Player, Long> cooldowns = new HashMap<>();
-    private final long cooldownTime = 20000;
+    private final long cooldownTime = 60000;
 
     @EventHandler
     public void onWeaponUse(PlayerInteractEvent event) {
@@ -44,13 +40,16 @@ public class FrostScythe implements Listener {
         }
         Location location = player.getLocation();
         List<Entity> entities = player.getNearbyEntities(5, 5, 5);
+        List<Entity> attackedEntities = new ArrayList<>();
+        attackedEntities.add(entities.get(1));
+        attackedEntities.add(entities.get(2));
 
         if (player.isSneaking()) {
-            for (Entity entity : entities) {
+            for (Entity entity : attackedEntities) {
                 if (entity instanceof LivingEntity) {
                     if (!(entity instanceof Player)) {
                         player.playSound(location, Sound.ENTITY_WITHER_HURT, 0.5f, 200);
-                        ((LivingEntity) entity).addPotionEffect(PotionEffectType.SLOW.createEffect(200, 100));
+                        ((LivingEntity) entity).addPotionEffect(PotionEffectType.SLOW.createEffect(400, 100));
                         LivingEntity livingEntity = (LivingEntity) entity;
                         createSnowflakeEffect(livingEntity);
                     }
@@ -85,9 +84,9 @@ public class FrostScythe implements Listener {
             Location standLocation = location.clone().add(x, 0, z);
 
             ArmorStand armorStand = location.getWorld().spawn(standLocation, ArmorStand.class);
+            armorStand.setVisible(false);
             armorStand.setCustomName("snowflake");
             armorStand.setCustomNameVisible(false);
-            armorStand.setVisible(false);
             armorStand.setInvulnerable(true);
             armorStand.setGravity(false);
             armorStand.setCustomNameVisible(false);
@@ -107,9 +106,9 @@ public class FrostScythe implements Listener {
             Location standLocation = location.clone().add(x, 0, z);
 
             ArmorStand armorStand = location.getWorld().spawn(standLocation, ArmorStand.class);
+            armorStand.setVisible(false);
             armorStand.setCustomName("snowflake");
             armorStand.setCustomNameVisible(false);
-            armorStand.setVisible(false);
             armorStand.setInvulnerable(true);
             armorStand.setGravity(false);
             armorStand.setCustomNameVisible(false);
@@ -121,7 +120,9 @@ public class FrostScythe implements Listener {
 
             snowflakes[points + i] = armorStand;
         }
-
+        if (snowflakesMap.containsKey(entity)) {
+            removeSnowflakes(entity);
+        }
         snowflakesMap.put(entity, snowflakes);
 
         new BukkitRunnable() {
@@ -136,10 +137,14 @@ public class FrostScythe implements Listener {
     }
 
     private void removeSnowflakes(LivingEntity entity) {
+        if (!snowflakesMap.containsKey(entity)) {
+            return;
+        }
+
         ArmorStand[] snowflakes = snowflakesMap.remove(entity);
         if (snowflakes != null) {
             for (ArmorStand snowflake : snowflakes) {
-                if (snowflake != null) {
+                if (snowflake != null && !snowflake.isDead()) {
                     snowflake.remove();
                 }
             }
@@ -158,12 +163,6 @@ public class FrostScythe implements Listener {
     private void setCooldown(Player player) {
         cooldowns.put(player, System.currentTimeMillis());
     }
-
-    @EventHandler
-    public void onEntityDeath(EntityDeathEvent event) {
-        LivingEntity entity = event.getEntity();
-        removeSnowflakes(entity);
-    }
     private long getCooldownTimeLeft(Player player) {
         if (!cooldowns.containsKey(player)) {
             return 0;
@@ -172,6 +171,12 @@ public class FrostScythe implements Listener {
         long currentTime = System.currentTimeMillis();
         long timeLeft = cooldownTime - (currentTime - lastUsed);
         return Math.max(0, timeLeft / 1000);
+    }
+
+    @EventHandler
+    public void onEntityDeath(EntityDeathEvent event) {
+        LivingEntity entity = event.getEntity();
+        removeSnowflakes(entity);
     }
 
 }

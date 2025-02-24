@@ -11,6 +11,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.example.dmytrok.dkentityplugin.LEVELSYSTEM.LevelSystem;
+import org.example.dmytrok.dkentityplugin.items.weapon.WeaponCreator;
 import org.example.dmytrok.dkentityplugin.utils.BossDefeatMenu;
 import org.example.dmytrok.dkentityplugin.utils.CongratulationTitle;
 
@@ -35,13 +36,13 @@ public class ZombieBossEvent implements Listener {
         Random random = new Random();
         int dropChance = random.nextInt(500);
         if(dropChance == 1) {
+
         }
         //Drop
 
         ItemStack[] itemStacks = new ItemStack[]{new ItemStack(Material.DIAMOND, 10),
                 new ItemStack(Material.EMERALD, 10),
                 new ItemStack(Material.GOLD_INGOT, 10),
-                rareDrop
         };
 
         List<ItemStack> loot = getLootList(itemStacks);

@@ -1,4 +1,5 @@
 org\example\dmytrok\dkentityplugin\LEVELSYSTEM\ScoreboardManager.class
+org\example\dmytrok\dkentityplugin\items\weapon\DemonBlade$1.class
 org\example\dmytrok\dkentityplugin\bosses\zombiebossMonarch\ZombieBossCommand.class
 org\example\dmytrok\dkentityplugin\bosses\golembossGuardianOfColdLand\GolemBossEntity.class
 org\example\dmytrok\dkentityplugin\bosses\zombiebossMonarch\ZombieBossEntity.class
@@ -9,11 +10,15 @@ org\example\dmytrok\dkentityplugin\bosses\blazebossFireElementKing\BlazeBossEven
 org\example\dmytrok\dkentityplugin\bosses\golembossGuardianOfColdLand\GolemBossEntity$1.class
 org\example\dmytrok\dkentityplugin\utils\CongratulationTitle.class
 org\example\dmytrok\dkentityplugin\DK_Entity_Plugin.class
+org\example\dmytrok\dkentityplugin\items\weapon\DemonSlayer.class
 org\example\dmytrok\dkentityplugin\items\weapon\FrostScythe$1.class
 org\example\dmytrok\dkentityplugin\bosses\golembossGuardianOfColdLand\GolemBossEvent$1.class
 org\example\dmytrok\dkentityplugin\bosses\golembossGuardianOfColdLand\GolemBossCommand.class
 org\example\dmytrok\dkentityplugin\bosses\golembossGuardianOfColdLand\GolemBossEvent.class
+org\example\dmytrok\dkentityplugin\items\weapon\Moonlight$1.class
 org\example\dmytrok\dkentityplugin\utils\LastDropCommand.class
+org\example\dmytrok\dkentityplugin\items\weapon\Moonlight.class
+org\example\dmytrok\dkentityplugin\items\weapon\DemonSlayer$1.class
 org\example\dmytrok\dkentityplugin\utils\CongratulationTitle$1.class
 org\example\dmytrok\dkentityplugin\items\weapon\FrostScythe.class
 org\example\dmytrok\dkentityplugin\bosses\zombiebossMonarch\ZombieBossEvent.class
