@@ -37,3 +37,4 @@ permissions:
     default: op
   lastdrop.user:
     description: Players can do it
+    default: not op
