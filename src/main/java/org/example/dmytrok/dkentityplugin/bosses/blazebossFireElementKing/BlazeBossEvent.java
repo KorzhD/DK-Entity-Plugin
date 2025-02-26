@@ -38,13 +38,13 @@ public class BlazeBossEvent implements Listener {
         Random random = new Random();
         ItemStack rareDrop = new ItemStack(Material.AIR);
         int dropChance = random.nextInt(500);
-        if (dropChance == 1) {
+        if (dropChance <= 5) {
             rareDrop = WeaponCreator.getDemonSlayer();
         }
 
         ItemStack rareDrop2 = new ItemStack(Material.AIR);
         int dropChance2 = random.nextInt(100);
-        if (dropChance == 1) {
+        if (dropChance <= 5) {
             rareDrop2 = WeaponCreator.getDemonBlade();
         }
         //Drop

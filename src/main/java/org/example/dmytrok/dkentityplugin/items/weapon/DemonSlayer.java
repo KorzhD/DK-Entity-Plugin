@@ -13,14 +13,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.example.dmytrok.dkentityplugin.DK_Entity_Plugin;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DemonSlayer implements Listener {
+
+    private final HashMap<UUID, ClickTracker> clickData = new HashMap<>();
     private final Map<Player, Long> cooldowns = new HashMap<>();
-    private final long cooldownTime = 60000;
+    private final long cooldownTime = 30000;
 
     @EventHandler
     public void onWeaponUse(PlayerInteractEvent event) {
@@ -32,34 +31,70 @@ public class DemonSlayer implements Listener {
                 player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Demon Slayer"))) {
             return;
         }
-        if (!(event.getAction() == Action.RIGHT_CLICK_AIR)) {
-            return;
-        }
-
         if (isOnCooldown(player)) {
             player.sendMessage("§4§lRecharge: " + getCooldownTimeLeft(player) + " sec");
             player.playSound(player.getLocation(), Sound.ENTITY_CAT_HURT, 2, 200);
             return;
         }
+        UUID playerId = player.getUniqueId();
+        Action action = event.getAction();
 
-        World world = player.getWorld();
-        Location location = player.getLocation();
+        if (action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK) {
+            if(isOnCooldown(player)) {
+                return;
+            }
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+            if (clickData.containsKey(playerId)) {
+                ClickTracker tracker = clickData.get(playerId);
+                if (tracker.hasLeftClick) {
+                    performComboAction(player);
+                    clickData.remove(playerId);
+                    return;
+                }
+            }
 
+           ClickTracker tracker = new ClickTracker();
+            clickData.put(playerId, tracker);
+
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    clickData.remove(playerId);
+                }
+            }.runTaskLater(DK_Entity_Plugin.getInstance(), 40);
+        }
+
+        if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
+            if (clickData.containsKey(playerId)) {
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+                ClickTracker tracker = clickData.get(playerId);
+                tracker.hasLeftClick = true;
+            }
+        }
+    }
+
+
+    private void performComboAction(Player player) {
+        player.sendMessage("§6Combo!");
         List<Entity> entities = player.getNearbyEntities(5, 5, 5);
         List<Entity> attackedEntities = new ArrayList<>();
-        attackedEntities.add(entities.get(1));
-        attackedEntities.add(entities.get(2));
-
+        for (int i = 0; i < Math.min(entities.size(), 2); i++) {
+            attackedEntities.add(entities.get(i));
+        }
         for (Entity entity : attackedEntities) {
             if (entity instanceof LivingEntity) {
                 if (!(entity instanceof Player)) {
-                    player.playSound(location, Sound.ENTITY_WITHER_HURT, 0.5f, 3);
-                    world.spawnParticle(Particle.FLAME, entity.getLocation().add(0, 1, 0), 5);
+                    player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT, 0.5f, 3);
+                    player.getWorld().spawnParticle(Particle.FLAME, entity.getLocation().add(0, 1, 0), 5);
                     createRotatingPentagram((LivingEntity) entity);
                 }
             }
         }
         setCooldown(player);
+    }
+
+    private static class ClickTracker {
+        boolean hasLeftClick = false;
     }
 
     private boolean isWoodSword(ItemStack itemStack) {

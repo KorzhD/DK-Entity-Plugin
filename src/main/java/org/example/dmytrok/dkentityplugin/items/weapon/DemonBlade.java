@@ -18,11 +18,14 @@ import org.example.dmytrok.dkentityplugin.DK_Entity_Plugin;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class DemonBlade implements Listener {
 
+    private final HashMap<UUID, ClickTracker> clickData = new HashMap<>();
     private final Map<Player, Long> cooldowns = new HashMap<>();
     private final long cooldownTime = 10000;
+
     @EventHandler
     public void onWeaponUse(PlayerInteractEvent event) {
         Player player = event.getPlayer();
@@ -33,26 +36,58 @@ public class DemonBlade implements Listener {
                 player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Demon Blade"))) {
             return;
         }
-        if (!(event.getAction() == Action.RIGHT_CLICK_AIR)) {
-            return;
-        }
 
         if (isOnCooldown(player)) {
-            player.sendMessage( "§4§lRecharge: " + getCooldownTimeLeft(player) + " sec");
+            player.sendMessage("§4§lRecharge: " + getCooldownTimeLeft(player) + " sec");
             player.playSound(player.getLocation(), Sound.ENTITY_CAT_HURT, 2, 200);
             return;
         }
 
-        World world = player.getWorld();
-        Location location = player.getLocation();
+        UUID playerId = player.getUniqueId();
+        Action action = event.getAction();
 
+        if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+            if (clickData.containsKey(playerId)) {
+                ClickTracker tracker = clickData.get(playerId);
+                if (tracker.hasLeftClick) {
+                    performComboAction(player);
+                    clickData.remove(playerId);
+                    return;
+                }
+            }
+
+            ClickTracker tracker = new ClickTracker();
+            clickData.put(playerId, tracker);
+
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    clickData.remove(playerId);
+                }
+            }.runTaskLater(DK_Entity_Plugin.getInstance(), 40);
+        }
+
+        if (action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK) {
+            if (clickData.containsKey(playerId)) {
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+                ClickTracker tracker = clickData.get(playerId);
+                tracker.hasLeftClick = true;
+            }
+        }
+    }
+
+
+    private void performComboAction(Player player) {
+        player.sendMessage("§6Combo!");
         List<Entity> entities = player.getNearbyEntities(5, 5, 5);
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity) {
                 if (!(entity instanceof Player)) {
+                    Location location = player.getLocation();
                     player.playSound(location, Sound.ENTITY_WITHER_HURT, 0.5f, 3);
                     ((LivingEntity) entity).addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 200, 50, false, false));
-                    world.spawnParticle(Particle.SWEEP_ATTACK, entity.getLocation().add(0, 1, 0), 5);
+                    location.getWorld().spawnParticle(Particle.SWEEP_ATTACK, entity.getLocation().add(0, 1, 0), 5);
 
                     createDarkSmokeVortex((LivingEntity) entity);
                 }
@@ -91,12 +126,17 @@ public class DemonBlade implements Listener {
         }.runTaskTimer(DK_Entity_Plugin.getInstance(), 0, 5);
     }
 
+private static class ClickTracker {
+    boolean hasLeftClick = false;
+}
+
     private boolean isWoodSword(ItemStack itemStack) {
         if (itemStack.getType().equals(Material.WOOD_SWORD)) {
             return true;
         }
         return false;
     }
+
     private boolean isOnCooldown(Player player) {
         if (!cooldowns.containsKey(player)) {
             return false;
@@ -109,6 +149,7 @@ public class DemonBlade implements Listener {
     private void setCooldown(Player player) {
         cooldowns.put(player, System.currentTimeMillis());
     }
+
     private long getCooldownTimeLeft(Player player) {
         if (!cooldowns.containsKey(player)) {
             return 0;

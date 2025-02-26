@@ -41,13 +41,13 @@ public class GolemBossEvent implements Listener {
 
         ItemStack rareDrop = new ItemStack(Material.AIR);
         int dropChance = random.nextInt(1000);
-        if (dropChance == 1) {
+        if (dropChance <= 20) {
             rareDrop = WeaponCreator.getFrostScythe();
         }
 
         ItemStack rareDrop2 = new ItemStack(Material.AIR);
         int dropChance2 = random.nextInt(500);
-        if (dropChance == 1) {
+        if (dropChance <= 20) {
             rareDrop2 = WeaponCreator.getMoonlight();
         }
         //Drop

@@ -18,7 +18,7 @@ import java.util.Map;
 public class Moonlight implements Listener {
 
     private final Map<Player, Long> cooldowns = new HashMap<>();
-    private final long cooldownTime = 30000;
+    private final long cooldownTime = 20000;
 
     @EventHandler
     public void onWeaponUse(PlayerInteractEvent event) {
@@ -76,8 +76,9 @@ public class Moonlight implements Listener {
     }
 
     private void giveShieldEffect(Player player) {
-        player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 100, 0, false, false));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 100, 4, false, false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 140, 0, false, false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 140, 4, false, false));
+        player.playSound(player.getLocation(), Sound.ITEM_SHIELD_BREAK, 1, 1);
 
         player.setInvulnerable(true);
         new BukkitRunnable() {
@@ -87,7 +88,7 @@ public class Moonlight implements Listener {
                 player.removePotionEffect(PotionEffectType.GLOWING);
                 player.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
             }
-        }.runTaskLater(DK_Entity_Plugin.getInstance(), 100);
+        }.runTaskLater(DK_Entity_Plugin.getInstance(), 140);
     }
 
 }

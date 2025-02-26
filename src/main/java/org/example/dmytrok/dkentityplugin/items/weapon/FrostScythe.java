@@ -17,7 +17,8 @@ import java.util.*;
 public class FrostScythe implements Listener {
     private final Map<LivingEntity, ArmorStand[]> snowflakesMap = new HashMap<>();
     private final Map<Player, Long> cooldowns = new HashMap<>();
-    private final long cooldownTime = 60000;
+    private final long cooldownTime = 30000;
+
 
     @EventHandler
     public void onWeaponUse(PlayerInteractEvent event) {
@@ -29,9 +30,10 @@ public class FrostScythe implements Listener {
                 player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Frost Scythe"))) {
             return;
         }
-        if (!(event.getAction() == Action.RIGHT_CLICK_AIR)) {
+        if (!(event.getAction() == Action.RIGHT_CLICK_AIR) && !(event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
             return;
         }
+
 
         if (isOnCooldown(player)) {
             player.sendMessage( "§4§lRecharge: " + getCooldownTimeLeft(player) + " sec");
@@ -41,9 +43,9 @@ public class FrostScythe implements Listener {
         Location location = player.getLocation();
         List<Entity> entities = player.getNearbyEntities(5, 5, 5);
         List<Entity> attackedEntities = new ArrayList<>();
-        attackedEntities.add(entities.get(1));
-        attackedEntities.add(entities.get(2));
-
+        for (int i = 0; i < Math.min(entities.size(), 2); i++) {
+            attackedEntities.add(entities.get(i));
+        }
         if (player.isSneaking()) {
             for (Entity entity : attackedEntities) {
                 if (entity instanceof LivingEntity) {
