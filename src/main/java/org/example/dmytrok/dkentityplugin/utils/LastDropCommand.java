@@ -19,11 +19,6 @@ public class LastDropCommand implements CommandExecutor {
 
         Player player = (Player) commandSender;
 
-        if (!(player.hasPermission("adminMenu.admin"))) {
-            commandSender.sendMessage("You must be an admin");
-            return false;
-        }
-
         Inventory lastDropMenu = Bukkit.createInventory(player, 27, "§aLast Drop | Take it all now");
 
         Inventory playerLastDrop = null;
