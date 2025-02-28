@@ -9,9 +9,12 @@ import org.example.dmytrok.dkentityplugin.items.bossKiller.BossKillerSwordComman
 import org.example.dmytrok.dkentityplugin.bosses.zombiebossMonarch.ZombieBossCommand;
 import org.example.dmytrok.dkentityplugin.bosses.zombiebossMonarch.ZombieBossEvent;
 import org.example.dmytrok.dkentityplugin.items.weapon.*;
+import org.example.dmytrok.dkentityplugin.items.weapon.EnderKatana;
+import org.example.dmytrok.dkentityplugin.items.weapon.BloodyDeath;
 import org.example.dmytrok.dkentityplugin.utils.BossDefeatMenu;
 import org.example.dmytrok.dkentityplugin.utils.LastDropCommand;
 import org.example.dmytrok.dkentityplugin.LEVELSYSTEM.ScoreboardManager;
+import org.example.dmytrok.dkentityplugin.utils.PlayerDeath;
 
 public final class DK_Entity_Plugin extends JavaPlugin {
 
@@ -25,12 +28,15 @@ public final class DK_Entity_Plugin extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new ScoreboardManager(), this);
         getServer().getPluginManager().registerEvents(new BossDefeatMenu(), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
 
-        getServer().getPluginManager().registerEvents(new FrostScythe(), this);
+        getServer().getPluginManager().registerEvents(new LegendarySword(), this);
+        getServer().getPluginManager().registerEvents(new BloodyDeath(), this);
+        getServer().getPluginManager().registerEvents(new EnderKatana(), this);
         getServer().getPluginManager().registerEvents(new DemonBlade(), this);
         getServer().getPluginManager().registerEvents(new DemonSlayer(), this);
-        getServer().getPluginManager().registerEvents(new LegendarySword(), this);
         getServer().getPluginManager().registerEvents(new Moonlight(), this);
+        getServer().getPluginManager().registerEvents(new FrostScythe(), this);
 
 
         getServer().getPluginManager().registerEvents(new ZombieBossEvent(), this);

@@ -1,23 +1,20 @@
-package org.example.dmytrok.dkentityplugin.items.weapon;
+package org.example.dmytrok.dkentityplugin.items.weapon.notready;
 
-import org.bukkit.*;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class LegendarySword implements Listener {
-
+public class LegendaryKatana implements Listener {
     private final Map<Player, Long> cooldowns = new HashMap<>();
     private final long cooldownTime = 20000;
 
@@ -28,15 +25,15 @@ public class LegendarySword implements Listener {
             return;
         }
         if (!(player.getInventory().getItemInMainHand().getItemMeta() != null &&
-                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Legendary Sword"))) {
+                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Mythic Sword"))) {
             return;
         }
-        if (!(event.getAction() == Action.RIGHT_CLICK_AIR)) {
+        if (!(event.getAction() == Action.RIGHT_CLICK_AIR) && !(event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
             return;
         }
 
-        if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && isOnCooldown(player)) {
-            player.sendMessage("§4§lRecharge: " + getCooldownTimeLeft(player) + " sec");
+        if (isOnCooldown(player)) {
+            player.sendMessage( "§4§lRecharge: " + getCooldownTimeLeft(player) + " sec");
             player.playSound(player.getLocation(), Sound.ENTITY_CAT_HURT, 2, 200);
             return;
         }
@@ -44,19 +41,8 @@ public class LegendarySword implements Listener {
         World world = player.getWorld();
         Location location = player.getLocation();
 
-        List<Entity> entities = player.getNearbyEntities(5, 5, 5);
-        for (Entity entity : entities) {
-            if (entity instanceof LivingEntity) {
-                if (entity instanceof Player) {
-                    player.playSound(location, Sound.ENTITY_WITHER_HURT, 0.5f, 3);
-                    ((Player) entity).addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 100, 2, false, false));
-                    ((Player) entity).playSound(entity.getLocation(), Sound.ENTITY_CAT_PURREOW, 0.5f, 3);
-                    for (int i = 0; i < 5; i++) {
-                        world.spawnParticle(Particle.VILLAGER_HAPPY, entity.getLocation().add(0, 1, 0), 5);
-                    }
-                }
-            }
-        }
+        // todo
+
         setCooldown(player);
     }
     private boolean isWoodSword(ItemStack itemStack) {

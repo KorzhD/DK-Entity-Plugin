@@ -2,7 +2,6 @@ package org.example.dmytrok.dkentityplugin.items.weapon;
 
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,11 +10,12 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 import org.example.dmytrok.dkentityplugin.DK_Entity_Plugin;
 
 import java.util.*;
 
-public class DemonSlayer implements Listener {
+public class EnderKatana implements Listener {
 
     private final HashMap<UUID, ClickTracker> clickData = new HashMap<>();
     private final Map<Player, Long> cooldowns = new HashMap<>();
@@ -28,9 +28,10 @@ public class DemonSlayer implements Listener {
             return;
         }
         if (!(player.getInventory().getItemInMainHand().getItemMeta() != null &&
-                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Demon Slayer"))) {
+                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Ender Katana"))) {
             return;
         }
+
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && isOnCooldown(player)) {
             player.sendMessage("§4§lRecharge: " + getCooldownTimeLeft(player) + " sec");
             player.playSound(player.getLocation(), Sound.ENTITY_CAT_HURT, 2, 200);
@@ -40,11 +41,7 @@ public class DemonSlayer implements Listener {
         UUID playerId = player.getUniqueId();
         Action action = event.getAction();
 
-        if (action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK) {
-            if(isOnCooldown(player)) {
-                return;
-            }
-
+        if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
             if (clickData.containsKey(playerId)) {
                 ClickTracker tracker = clickData.get(playerId);
@@ -55,7 +52,7 @@ public class DemonSlayer implements Listener {
                 }
             }
 
-           ClickTracker tracker = new ClickTracker();
+            ClickTracker tracker = new ClickTracker();
             clickData.put(playerId, tracker);
 
             new BukkitRunnable() {
@@ -66,7 +63,7 @@ public class DemonSlayer implements Listener {
             }.runTaskLater(DK_Entity_Plugin.getInstance(), 40);
         }
 
-        if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
+        if (action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK) {
             if (clickData.containsKey(playerId)) {
                 player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
                 ClickTracker tracker = clickData.get(playerId);
@@ -75,21 +72,59 @@ public class DemonSlayer implements Listener {
         }
     }
 
-
     private void performComboAction(Player player) {
         player.sendMessage("§6Combo!");
-        List<Entity> entities = player.getNearbyEntities(5, 5, 5);
+        List<Entity> entities = player.getNearbyEntities(10, 3, 10);
         entities.removeIf(entity -> entity instanceof Player);
         List<Entity> attackedEntities = new ArrayList<>();
-        for (int i = 0; i < Math.min(entities.size(), 2); i++) {
+        for (int i = 0; i < Math.min(entities.size(), 1); i++) {
             attackedEntities.add(entities.get(i));
         }
         for (Entity entity : attackedEntities) {
             if (entity instanceof LivingEntity) {
                 if (!(entity instanceof Player)) {
-                    player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT, 0.5f, 3);
-                    player.getWorld().spawnParticle(Particle.FLAME, entity.getLocation().add(0, 1, 0), 5);
-                    createRotatingPentagram((LivingEntity) entity);
+
+                    Location entityLocation = entity.getLocation();
+                    player.playSound(player.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 0.5f, 3);
+
+                    new BukkitRunnable() {
+                        private int teleportCount = 0;
+
+                        @Override
+                        public void run() {
+                            if (teleportCount >= 4) {
+                                cancel();
+                                return;
+                            }
+                            Vector direction = entityLocation.clone().subtract(player.getLocation()).toVector();
+                            direction.setY(0);
+
+                            switch (teleportCount) {
+                                case 0:
+                                    player.teleport(entityLocation.add(2, 0, 0));
+                                    ((LivingEntity) entity).damage(5);
+                                    player.setVelocity(direction);
+                                    break;
+                                case 1:
+                                    player.teleport(entityLocation.add(-2, 0, 0));
+                                    ((LivingEntity) entity).damage(10);
+                                    player.setVelocity(direction);
+                                    break;
+                                case 2:
+                                    player.teleport(entityLocation.add(0, 0, 2));
+                                    ((LivingEntity) entity).damage(10);
+                                    player.setVelocity(direction);
+                                    break;
+                                case 3:
+                                    player.teleport(entityLocation.add(0, 0, -2));
+                                    ((LivingEntity) entity).damage(5);
+                                    player.setVelocity(direction);
+                                    break;
+                            }
+                            player.playSound(player.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 1, 1);
+                            teleportCount++;
+                        }
+                    }.runTaskTimer(DK_Entity_Plugin.getInstance(), 0, 10);
                 }
             }
         }
@@ -128,72 +163,5 @@ public class DemonSlayer implements Listener {
         long currentTime = System.currentTimeMillis();
         long timeLeft = cooldownTime - (currentTime - lastUsed);
         return Math.max(0, timeLeft / 1000);
-    }
-
-    private void createRotatingPentagram(LivingEntity entity) {
-        if (entity.getType().equals(EntityType.ARMOR_STAND)) {
-            return;
-        }
-
-        new BukkitRunnable() {
-            int ticks = 200;
-            double rotation = 0;
-            double circleRadius = 3;
-
-            @Override
-            public void run() {
-                if (ticks <= 0 || entity.isDead()) {
-                    this.cancel();
-                    return;
-                }
-
-                Location loc = entity.getLocation().clone().subtract(0, -0.3, 0);
-                double radius = 2.5;
-                int points = 5;
-
-                for (int i = 0; i < points; i++) {
-                    double angle1 = Math.toRadians((360.0 / points) * i) + rotation;
-                    double angle2 = Math.toRadians((360.0 / points) * ((i + 2) % points)) + rotation;
-
-                    double x1 = Math.cos(angle1) * radius;
-                    double z1 = Math.sin(angle1) * radius;
-                    double x2 = Math.cos(angle2) * radius;
-                    double z2 = Math.sin(angle2) * radius;
-
-                    drawParticleLine(loc.clone().add(x1, 0, z1), loc.clone().add(x2, 0, z2));
-                }
-
-
-                int circlePoints = 50;
-                for (int i = 0; i < circlePoints; i++) {
-                    double angle = Math.toRadians((360.0 / circlePoints) * i) + rotation;
-                    double x = Math.cos(angle) * circleRadius;
-                    double z = Math.sin(angle) * circleRadius;
-
-                    loc.getWorld().spawnParticle(Particle.REDSTONE, loc.clone().add(x, 0, z), 2);
-                }
-
-                if (ticks % 40 == 0) {
-                    entity.damage(10);
-                    entity.getLocation().getWorld().spawnParticle(Particle.LAVA, entity.getLocation(), 5);
-                }
-
-                rotation += Math.toRadians(4);
-                ticks -= 5;
-            }
-        }.runTaskTimer(DK_Entity_Plugin.getInstance(), 0, 5);
-    }
-
-    private void drawParticleLine(Location start, Location end) {
-        int points = 30;
-        World world = start.getWorld();
-
-        for (int i = 0; i <= points; i++) {
-            double t = i / (double) points;
-            double x = start.getX() + (end.getX() - start.getX()) * t;
-            double y = start.getY() + (end.getY() - start.getY()) * t;
-            double z = start.getZ() + (end.getZ() - start.getZ()) * t;
-            world.spawnParticle(Particle.REDSTONE, new Location(world, x, y, z), 2);
-        }
     }
 }

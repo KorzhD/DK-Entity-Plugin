@@ -34,15 +34,16 @@ public class ZombieBossEvent implements Listener {
         //Boss
         ItemStack rareDrop = new ItemStack(Material.AIR);
         Random random = new Random();
-        int dropChance = random.nextInt(500);
-        if(dropChance == 1) {
-
+        int dropChance = random.nextInt(2);
+        if(dropChance <= 1) {
+            rareDrop = WeaponCreator.getBloodyDeath();
         }
         //Drop
 
         ItemStack[] itemStacks = new ItemStack[]{new ItemStack(Material.DIAMOND, 10),
                 new ItemStack(Material.EMERALD, 10),
                 new ItemStack(Material.GOLD_INGOT, 10),
+                rareDrop
         };
 
         List<ItemStack> loot = getLootList(itemStacks);

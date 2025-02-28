@@ -35,13 +35,15 @@ public class FrostScythe implements Listener {
         }
 
 
-        if (isOnCooldown(player)) {
-            player.sendMessage( "§4§lRecharge: " + getCooldownTimeLeft(player) + " sec");
+        if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && isOnCooldown(player)) {
+            player.sendMessage("§4§lRecharge: " + getCooldownTimeLeft(player) + " sec");
             player.playSound(player.getLocation(), Sound.ENTITY_CAT_HURT, 2, 200);
             return;
         }
+
         Location location = player.getLocation();
         List<Entity> entities = player.getNearbyEntities(5, 5, 5);
+        entities.removeIf(entity -> entity instanceof Player);
         List<Entity> attackedEntities = new ArrayList<>();
         for (int i = 0; i < Math.min(entities.size(), 2); i++) {
             attackedEntities.add(entities.get(i));
