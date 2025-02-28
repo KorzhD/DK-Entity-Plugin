@@ -68,7 +68,9 @@ public class MythicBlade implements Listener {
 
                 for (Entity entity : location.getWorld().getNearbyEntities(location, 4, 4, 4)) {
                     if (entity instanceof LivingEntity && !(entity instanceof Player)) {
-                        ((LivingEntity) entity).damage(15);
+                        if(!(entity instanceof ArmorStand)) {
+                            ((LivingEntity) entity).damage(15);
+                        }
                     }
                 }
 

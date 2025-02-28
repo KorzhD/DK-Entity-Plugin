@@ -1,10 +1,7 @@
 package org.example.dmytrok.dkentityplugin.items.weapon;
 
 import org.bukkit.*;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -80,6 +77,7 @@ public class DemonSlayer implements Listener {
         player.sendMessage("§6Combo!");
         List<Entity> entities = player.getNearbyEntities(5, 5, 5);
         entities.removeIf(entity -> entity instanceof Player);
+        entities.removeIf(entity -> entity instanceof ArmorStand);
         List<Entity> attackedEntities = new ArrayList<>();
         for (int i = 0; i < Math.min(entities.size(), 2); i++) {
             attackedEntities.add(entities.get(i));

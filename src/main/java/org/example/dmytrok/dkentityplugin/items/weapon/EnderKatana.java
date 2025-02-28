@@ -1,6 +1,7 @@
 package org.example.dmytrok.dkentityplugin.items.weapon;
 
 import org.bukkit.*;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -83,6 +84,9 @@ public class EnderKatana implements Listener {
         for (Entity entity : attackedEntities) {
             if (entity instanceof LivingEntity) {
                 if (!(entity instanceof Player)) {
+                    if(entity instanceof ArmorStand) {
+                        return;
+                    }
 
                     Location entityLocation = entity.getLocation();
                     player.playSound(player.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 0.5f, 3);

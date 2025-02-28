@@ -1,6 +1,7 @@
 package org.example.dmytrok.dkentityplugin.items.weapon;
 
 import org.bukkit.*;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -48,11 +49,13 @@ public class LegendarySword implements Listener {
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity) {
                 if (entity instanceof Player) {
+                    if(!(entity instanceof ArmorStand)) {
                     player.playSound(location, Sound.ENTITY_WITHER_HURT, 0.5f, 3);
                     ((Player) entity).addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 100, 2, false, false));
                     ((Player) entity).playSound(entity.getLocation(), Sound.ENTITY_CAT_PURREOW, 0.5f, 3);
                     for (int i = 0; i < 5; i++) {
                         world.spawnParticle(Particle.VILLAGER_HAPPY, entity.getLocation().add(0, 1, 0), 5);
+                    }
                     }
                 }
             }

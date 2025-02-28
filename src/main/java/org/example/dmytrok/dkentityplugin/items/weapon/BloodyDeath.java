@@ -1,6 +1,7 @@
 package org.example.dmytrok.dkentityplugin.items.weapon;
 
 import org.bukkit.*;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -58,6 +59,9 @@ public class BloodyDeath implements Listener {
     @EventHandler
     public void onPlayerAttack(EntityDamageByEntityEvent event) {
         if (!(event.getDamager() instanceof Player)) {
+            return;
+        }
+        if(event.getEntity() instanceof ArmorStand) {
             return;
         }
 

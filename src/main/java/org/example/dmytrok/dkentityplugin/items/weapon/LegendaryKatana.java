@@ -55,6 +55,9 @@ public class LegendaryKatana implements Listener {
         if (!(event.getDamager() instanceof Player) || !(event.getEntity() instanceof LivingEntity)) {
             return;
         }
+        if(event.getEntity() instanceof ArmorStand) {
+            return;
+        }
         Player player = (Player) event.getDamager();
         LivingEntity mob = (LivingEntity) event.getEntity();
 

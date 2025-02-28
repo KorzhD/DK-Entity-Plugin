@@ -52,6 +52,9 @@ public class FrostScythe implements Listener {
             for (Entity entity : attackedEntities) {
                 if (entity instanceof LivingEntity) {
                     if (!(entity instanceof Player)) {
+                        if(entity instanceof ArmorStand) {
+                            return;
+                        }
                         player.playSound(location, Sound.ENTITY_WITHER_HURT, 0.5f, 200);
                         ((LivingEntity) entity).addPotionEffect(PotionEffectType.SLOW.createEffect(400, 100));
                         LivingEntity livingEntity = (LivingEntity) entity;
