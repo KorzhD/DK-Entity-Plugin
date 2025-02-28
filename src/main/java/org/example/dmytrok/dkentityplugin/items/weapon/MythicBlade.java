@@ -1,10 +1,7 @@
-package org.example.dmytrok.dkentityplugin.items.weapon.notready;
+package org.example.dmytrok.dkentityplugin.items.weapon;
 
 import org.bukkit.*;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -21,6 +18,7 @@ public class MythicBlade implements Listener {
 
     private final Map<Player, Long> cooldowns = new HashMap<>();
     private final long cooldownTime = 5000;
+    private final long tornadoDuration = 100L;
     @EventHandler
     public void onWeaponUse(PlayerInteractEvent event) {
         Player player = event.getPlayer();
@@ -41,10 +39,66 @@ public class MythicBlade implements Listener {
             return;
         }
 
-        //todo
+        setCooldown(player);
+        spawnTornado(player);
 
     }
+    private void spawnTornado(Player player) {
+        Location location = player.getLocation().add(player.getLocation().getDirection().multiply(2));
+        ArmorStand tornadoCore = location.getWorld().spawn(location, ArmorStand.class);
+        tornadoCore.setVisible(false);
+        tornadoCore.setGravity(false);
 
+        new BukkitRunnable() {
+            int ticks = 0;
+
+            @Override
+            public void run() {
+                if (ticks >= tornadoDuration) {
+                    tornadoCore.remove();
+                    cancel();
+                    return;
+                }
+
+                location.add(player.getLocation().getDirection().multiply(0.5));
+                tornadoCore.teleport(location);
+
+               spawnTornadoParticles(location.getWorld(), location);
+                playTornadoSound(location.getWorld(), location);
+
+                for (Entity entity : location.getWorld().getNearbyEntities(location, 4, 4, 4)) {
+                    if (entity instanceof LivingEntity && !(entity instanceof Player)) {
+                        ((LivingEntity) entity).damage(15);
+                    }
+                }
+
+                ticks++;
+            }
+        }.runTaskTimer(DK_Entity_Plugin.getInstance(), 0, 1);
+    }
+
+    private void spawnTornadoParticles(World world, Location loc) {
+        for (double y = 0; y < 3; y += 0.5) {
+            for (double angle = 0; angle < 360; angle += 45) {
+                double radians = Math.toRadians(angle);
+                double x = Math.cos(radians) * 1.5;
+                double z = Math.sin(radians) * 1.5;
+                world.spawnParticle(Particle.CLOUD, loc.clone().add(x, y, z), 0);
+            }
+        }
+    }
+
+    private void playTornadoSound(World world, Location loc) {
+        world.playSound(loc, Sound.ENTITY_ENDERDRAGON_FLAP, 1, 1);
+    }
+
+    private void damageNearbyMobs(World world, Location loc) {
+        for (Entity entity : world.getNearbyEntities(loc, 4, 4, 4)) {
+            if (entity instanceof LivingEntity && !(entity instanceof Player)) {
+                ((LivingEntity) entity).damage(20);
+            }
+        }
+    }
 
     private boolean isWoodSword(ItemStack itemStack) {
         if (itemStack.getType().equals(Material.WOOD_SWORD)) {

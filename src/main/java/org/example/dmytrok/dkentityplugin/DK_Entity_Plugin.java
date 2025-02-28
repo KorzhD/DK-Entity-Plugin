@@ -12,6 +12,7 @@ import org.example.dmytrok.dkentityplugin.items.weapon.*;
 import org.example.dmytrok.dkentityplugin.items.weapon.EnderKatana;
 import org.example.dmytrok.dkentityplugin.items.weapon.BloodyDeath;
 import org.example.dmytrok.dkentityplugin.items.weapon.LegendaryKatana;
+import org.example.dmytrok.dkentityplugin.items.weapon.MythicBlade;
 import org.example.dmytrok.dkentityplugin.utils.BossDefeatMenu;
 import org.example.dmytrok.dkentityplugin.utils.LastDropCommand;
 import org.example.dmytrok.dkentityplugin.LEVELSYSTEM.ScoreboardManager;
@@ -32,6 +33,7 @@ public final class DK_Entity_Plugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
 
         getServer().getPluginManager().registerEvents(new LegendarySword(), this);
+        getServer().getPluginManager().registerEvents(new MythicBlade(), this);
         getServer().getPluginManager().registerEvents(new LegendaryKatana(), this);
         getServer().getPluginManager().registerEvents(new BloodyDeath(), this);
         getServer().getPluginManager().registerEvents(new EnderKatana(), this);
