@@ -36,6 +36,7 @@ public class ZombieBossEvent implements Listener {
         Random random = new Random();
         int dropChance = random.nextInt(2);
         if(dropChance <= 1) {
+
         }
         //Drop
 

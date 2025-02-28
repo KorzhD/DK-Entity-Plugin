@@ -22,7 +22,9 @@ public class BossDefeatMenu implements Listener {
     public static HashMap<UUID, Inventory> lastDrop = new HashMap<>();
 
     public static void setBossInventory(HashMap<Player, Double> players, List<ItemStack> loot) {
+
         Set<Player> playerList = players.keySet();
+        playerList.removeIf(player -> players.get(player) < 50);
         for (Player player : playerList) {
             Inventory bossInventory = Bukkit.createInventory(player, 27, "§aCongratulation!!");
             for (ItemStack item : loot) {

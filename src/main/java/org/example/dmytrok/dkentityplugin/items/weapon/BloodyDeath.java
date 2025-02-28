@@ -69,7 +69,6 @@ public class BloodyDeath implements Listener {
         }
 
         if (berserkActive.getOrDefault(player, false)) {
-            player.getWorld().playSound(player.getLocation(), Sound.ENTITY_POLAR_BEAR_HURT, 2, 1);
             int bonusDamage = berserkDamage.getOrDefault(player, 2);
             event.setDamage(event.getDamage() + bonusDamage);
             berserkDamage.put(player, bonusDamage + 2);
@@ -82,6 +81,7 @@ public class BloodyDeath implements Listener {
         player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SPAWN, 1, 1);
         player.getWorld().strikeLightningEffect(player.getLocation());
         player.playSound(player.getLocation(), Sound.ENTITY_LIGHTNING_THUNDER, 1, 1);
+        player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20, 1));
         Collection<Entity> nearby = player.getNearbyEntities(5, 3, 5);
         for (Entity entity : nearby) {
             if (entity instanceof Player) {

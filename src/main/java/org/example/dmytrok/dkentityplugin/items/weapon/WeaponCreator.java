@@ -111,7 +111,7 @@ public class WeaponCreator {
         legendaryKatanaMeta.setDisplayName("Legendary Katana");
         legendaryKatanaMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("§fThis weapon is capable of cutting even a soul.");
         legendaryKatanaMeta.setLore(lore);
         legendaryKatanaMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
