@@ -1,6 +1,6 @@
 name: DK-Entity-Plugin
 version: '${project.version}'
-main: org.example.dmytrok.dkentityplugin.DK_Entity_Plugin
+main: org.example.dmytrok.dkserverplugin.DK_Server_Plugin
 commands:
   zombieboss:
     description: summon Zombie Boss
@@ -22,6 +22,26 @@ commands:
     description: Will keep your last drop from boss if inventory was full
     usage: /lastdrop
     permission: lastdrop.user
+  adminMenu:
+    description: Admin Menu
+    usage: /adminMenu
+    permission: adminMenu.admin
+  menu:
+    description: Menu
+    usage: /menu
+    permission: menu.user
+  personalAccount:
+    description: Personal Account
+    usage: personalaccount
+    permission: personalaccount.user
+  backpack:
+    description: Backpack
+    usage: backpack
+    permission: backpack.user
+  trademenu:
+    description: Trade System
+    usage: trademenu
+    permission: trademenu.user
 permissions:
   zombieboss.admin:
     description: Only admin can do it
@@ -38,3 +58,21 @@ permissions:
   lastdrop.user:
     description: Players can do it
     default: not op
+  adminMenu.admin:
+    description: Only admin can open this menu
+    default: op
+  menu.user:
+    description: Menu
+    default: not op
+  personalAccount.user:
+    description: Personal Account
+    default: not op
+  backpack.user:
+    description: backpack
+    default: not op
+  trademenu.user:
+    description: trademenu
+    default: not op
+
+
+

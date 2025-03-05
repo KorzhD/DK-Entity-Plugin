@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example.dmytroK</groupId>
-    <artifactId>DK-Entity-Plugin</artifactId>
+    <artifactId>DK-Server-Plugin</artifactId>
     <version>1</version>
     <packaging>jar</packaging>
 
