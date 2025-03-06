@@ -9,6 +9,9 @@ import org.example.dmytrok.dkserverplugin.ITEMS.accessories.IceCoreRing;
 import org.example.dmytrok.dkserverplugin.ITEMS.accessories.FrozenEyeRing;
 import org.example.dmytrok.dkserverplugin.ITEMS.accessories.DragonsSparkRing;
 import org.example.dmytrok.dkserverplugin.ITEMS.accessories.FlameJudgeRing;
+import org.example.dmytrok.dkserverplugin.ITEMS.accessories.EyeOfTheVoid;
+import org.example.dmytrok.dkserverplugin.ITEMS.accessories.GloomOfTheSoul;
+import org.example.dmytrok.dkserverplugin.ITEMS.accessories.RingOfTheFaceless;
 import org.example.dmytrok.dkserverplugin.ITEMS.bossKiller.BossKillerSwordCommand;
 import org.example.dmytrok.dkserverplugin.ENTITY.bosses.zombiebossMonarch.ZombieBossCommand;
 import org.example.dmytrok.dkserverplugin.ENTITY.bosses.zombiebossMonarch.ZombieBossEvent;
@@ -69,6 +72,9 @@ public final class DK_Server_Plugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FrozenEyeRing(), this);
         getServer().getPluginManager().registerEvents(new DragonsSparkRing(), this);
         getServer().getPluginManager().registerEvents(new FlameJudgeRing(), this);
+        getServer().getPluginManager().registerEvents(new EyeOfTheVoid(), this);
+        getServer().getPluginManager().registerEvents(new GloomOfTheSoul(), this);
+        getServer().getPluginManager().registerEvents(new RingOfTheFaceless(), this);
         //RINGS
 
         //BOSS
