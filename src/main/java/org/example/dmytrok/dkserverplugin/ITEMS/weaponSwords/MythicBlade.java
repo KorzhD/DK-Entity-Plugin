@@ -104,10 +104,7 @@ public class MythicBlade implements Listener {
     }
 
     private boolean isWoodSword(ItemStack itemStack) {
-        if (itemStack.getType().equals(Material.WOOD_SWORD)) {
-            return true;
-        }
-        return false;
+        return itemStack.getType() == Material.WOOD_SWORD;
     }
 
     private boolean isOnCooldown(Player player) {
