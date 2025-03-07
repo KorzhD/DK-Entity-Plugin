@@ -10,6 +10,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
+import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.WeaponCreator;
 import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelSystem;
 import org.example.dmytrok.dkserverplugin.UTILS.BossDefeatMenu;
 import org.example.dmytrok.dkserverplugin.UTILS.CongratulationTitle;
@@ -32,16 +33,50 @@ public class ZombieBossEvent implements Listener {
 
         //Boss
         ItemStack rareDrop = new ItemStack(Material.AIR);
+        ItemStack rareDrop1 = new ItemStack(Material.AIR);
+        ItemStack rareDrop2 = new ItemStack(Material.AIR);
+        ItemStack rareDrop3 = new ItemStack(Material.AIR);
+        ItemStack rareDrop4 = new ItemStack(Material.AIR);
+        ItemStack rareDrop5 = new ItemStack(Material.AIR);
+        ItemStack rareDrop6 = new ItemStack(Material.AIR);
+        ItemStack rareDrop7 = new ItemStack(Material.AIR);
+        ItemStack rareDrop8 = new ItemStack(Material.AIR);
+        ItemStack rareDrop9 = new ItemStack(Material.AIR);
+        ItemStack rareDrop10 = new ItemStack(Material.AIR);
+        ItemStack rareDrop11 = new ItemStack(Material.AIR);
+      //  ItemStack rareDrop12 = new ItemStack(Material.AIR);
+      //  ItemStack rareDrop13 = new ItemStack(Material.AIR);
         Random random = new Random();
         int dropChance = random.nextInt(2);
         if(dropChance <= 1) {
+            rareDrop = WeaponCreator.getEpicSword();
+            rareDrop1 = WeaponCreator.getMoltenSword();
+            rareDrop2 = WeaponCreator.getHeroSword();
+            rareDrop3 = WeaponCreator.getLegendarySword();
+            rareDrop4 = WeaponCreator.getMythicBlade();
+            rareDrop5 = WeaponCreator.getLegendaryKatana();
+            rareDrop6 = WeaponCreator.getBloodyDeath();
+            rareDrop7 = WeaponCreator.getEnderKatana();
+            rareDrop8 = WeaponCreator.getDemonBlade();
+            rareDrop9 = WeaponCreator.getDemonSlayer();
+            rareDrop10 = WeaponCreator.getMoonlight();
+            rareDrop11 = WeaponCreator.getFrostScythe();
         }
         //Drop
 
-        ItemStack[] itemStacks = new ItemStack[]{new ItemStack(Material.DIAMOND, 10),
-                new ItemStack(Material.EMERALD, 10),
-                new ItemStack(Material.GOLD_INGOT, 10),
-                rareDrop
+        ItemStack[] itemStacks = new ItemStack[]{
+                rareDrop,
+                rareDrop1,
+                rareDrop2,
+                rareDrop3,
+                rareDrop4,
+                rareDrop5,
+                rareDrop6,
+                rareDrop7,
+                rareDrop8,
+                rareDrop9,
+                rareDrop10,
+                rareDrop11
         };
 
         List<ItemStack> loot = getLootList(itemStacks);

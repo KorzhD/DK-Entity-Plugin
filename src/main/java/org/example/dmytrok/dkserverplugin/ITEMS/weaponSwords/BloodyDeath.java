@@ -80,6 +80,8 @@ public class BloodyDeath implements Listener {
     }
 
     private void activateBerserk(Player player) {
+        player.sendTitle("§6§lCombo!", "§n§4Berserk Mode", 15, 15, 15);
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDEREYE_DEATH, 3, 1);
         berserkActive.put(player, true);
         berserkDamage.put(player, 2);
         player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SPAWN, 1, 1);

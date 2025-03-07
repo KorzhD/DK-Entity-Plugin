@@ -74,7 +74,8 @@ public class EnderKatana implements Listener {
     }
 
     private void performComboAction(Player player) {
-        player.sendMessage("§6Combo!");
+        player.sendTitle("§6§lCombo!", "§5Ender Speed", 15, 15, 15);
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDEREYE_DEATH, 3, 1);
         List<Entity> entities = player.getNearbyEntities(10, 3, 10);
         entities.removeIf(entity -> entity instanceof Player);
         List<Entity> attackedEntities = new ArrayList<>();

@@ -46,6 +46,8 @@ public class LegendarySword implements Listener {
         Location location = player.getLocation();
 
         List<Entity> entities = player.getNearbyEntities(5, 5, 5);
+        player.sendTitle("§6§lCombo!", "§cTeam Regeneration", 15, 15, 15);
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDEREYE_DEATH, 3, 1);
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity) {
                 if (entity instanceof Player) {

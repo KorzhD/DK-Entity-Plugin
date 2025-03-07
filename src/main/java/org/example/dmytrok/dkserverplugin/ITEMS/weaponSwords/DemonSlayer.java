@@ -74,7 +74,8 @@ public class DemonSlayer implements Listener {
 
 
     private void performComboAction(Player player) {
-        player.sendMessage("§6Combo!");
+        player.sendTitle("§6§lCombo!", "§4Pentagram of Fire", 15, 15, 15);
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDEREYE_DEATH, 3, 1);
         List<Entity> entities = player.getNearbyEntities(5, 5, 5);
         entities.removeIf(entity -> entity instanceof Player);
         entities.removeIf(entity -> entity instanceof ArmorStand);

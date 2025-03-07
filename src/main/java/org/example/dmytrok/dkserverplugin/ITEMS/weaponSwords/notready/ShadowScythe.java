@@ -42,6 +42,8 @@ public class ShadowScythe implements Listener {
         }
 
         private void createVoidZone(Player player) {
+            player.sendTitle("§6§lCombo!", "§8Black Hole", 15, 15, 15);
+            player.playSound(player.getLocation(), Sound.ENTITY_ENDEREYE_DEATH, 3, 1);
             Location loc = player.getLocation().add(player.getLocation().getDirection().multiply(5));
             World world = loc.getWorld();
 

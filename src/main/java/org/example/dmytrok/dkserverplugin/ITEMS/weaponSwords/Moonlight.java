@@ -76,6 +76,8 @@ public class Moonlight implements Listener {
     }
 
     private void giveShieldEffect(Player player) {
+        player.sendTitle("§6§lCombo!", "§3Shield of the Night", 15, 15, 15);
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDEREYE_DEATH, 3, 1);
         player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 140, 0, false, false));
         player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 140, 4, false, false));
         player.playSound(player.getLocation(), Sound.ITEM_SHIELD_BREAK, 1, 1);

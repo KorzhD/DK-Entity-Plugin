@@ -45,6 +45,8 @@ public class LegendaryKatana implements Listener {
         }
 
 
+        player.sendTitle("§6§lCombo!", "§fSoul Butcher", 15, 15, 15);
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDEREYE_DEATH, 3, 1);
         player.sendMessage("§f§lLegendary Katana is ready! Hit a mob to activate.");
         player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 3, 1);
         activeStands.put(player.getUniqueId(), null);

@@ -58,7 +58,7 @@ public class FrostScythe implements Listener {
                         player.playSound(location, Sound.ENTITY_WITHER_HURT, 0.5f, 200);
                         ((LivingEntity) entity).addPotionEffect(PotionEffectType.SLOW.createEffect(400, 100));
                         LivingEntity livingEntity = (LivingEntity) entity;
-                        createSnowflakeEffect(livingEntity);
+                        createSnowflakeEffect(livingEntity, player);
                     }
                 }
             }
@@ -73,7 +73,9 @@ public class FrostScythe implements Listener {
         return false;
     }
 
-    private void createSnowflakeEffect(LivingEntity entity) {
+    private void createSnowflakeEffect(LivingEntity entity, Player player) {
+        player.sendTitle("§6§lCombo!", "§bIce Snowflake", 15, 15, 15);
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDEREYE_DEATH, 3, 1);
         if (entity.getType().equals(EntityType.ARMOR_STAND)) {
             return;
         }

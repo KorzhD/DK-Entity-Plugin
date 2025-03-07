@@ -43,6 +43,8 @@ public class MythicBlade implements Listener {
 
     }
     private void spawnTornado(Player player) {
+        player.sendTitle("§6§lCombo!", "§fTornado", 15, 15, 15);
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDEREYE_DEATH, 3, 1);
         Location location = player.getLocation().add(player.getLocation().getDirection().multiply(2));
         ArmorStand tornadoCore = location.getWorld().spawn(location, ArmorStand.class);
         tornadoCore.setVisible(false);
