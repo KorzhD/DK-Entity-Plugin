@@ -11,6 +11,14 @@ import java.util.List;
 
 public class WeaponCreator {
 
+    public static ItemStack getShadowScythe() {
+     return null;
+    }
+
+    public static ItemStack getSpaceDivider() {
+        return null;
+    }
+
 
     public static ItemStack getFrostScythe() {
         ItemStack frostScythe = new ItemStack(Material.WOOD_SWORD);
@@ -22,10 +30,11 @@ public class WeaponCreator {
         lore.add("§l§bThe handle is made from his flesh.");
         lore.add("§l§bCapable of cutting the highest mountain peaks.");
         lore.add("");
-        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: ");
         lore.add("§4§lDamage: ");
         lore.add("");
-        lore.add("§bIce Snowflake: §7Shift + RMB");
+        lore.add("§b§lIce Snowflake: §7Shift + RMB");
         lore.add("");
         frostScytheMeta.setLore(lore);
         frostScytheMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES,
@@ -42,10 +51,11 @@ public class WeaponCreator {
         List<String> lore = new ArrayList<>();
         lore.add("§bForged from icy peaks that fed on moonlight for eternity");
         lore.add("");
-        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: ");
         lore.add("§4§lDamage: ");
         lore.add("");
-        lore.add("§3Shield of the Night: §7RMB");
+        lore.add("§3§lShield of the Night: §7RMB");
         lore.add("");
         moonLightMeta.setLore(lore);
         moonLightMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES,
@@ -63,10 +73,11 @@ public class WeaponCreator {
         List<String> lore = new ArrayList<>();
         lore.add("§l§4A blade soaked in demon blood, waiting for the next battle");
         lore.add("");
-        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: ");
         lore.add("§4§lDamage: ");
         lore.add("");
-        lore.add("§4Pentagram of Fire: §7LMB + RMB + LMB");
+        lore.add("§4§lPentagram of Fire: §7LMB + RMB + LMB");
         lore.add("");
         demonSlayerMeta.setLore(lore);
         demonSlayerMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES,
@@ -84,10 +95,11 @@ public class WeaponCreator {
         List<String> lore = new ArrayList<>();
         lore.add("§4Basic Attribute of the Demon King's Army");
         lore.add("");
-        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: ");
         lore.add("§4§lDamage: ");
         lore.add("");
-        lore.add("§0Suffocation: §7RMB + LMB + RMB");
+        lore.add("§8§lSuffocation: §7RMB + LMB + RMB");
         lore.add("");
         demonBladeMeta.setLore(lore);
         demonBladeMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
@@ -106,10 +118,11 @@ public class WeaponCreator {
         lore.add("§5Elusive speed, invisible to the eye.");
         lore.add("§5Comparable to teleportation...");
         lore.add("");
-        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: ");
         lore.add("§4§lDamage: ");
         lore.add("");
-        lore.add("§5Ender Speed: §7RMB + LMB + RMB");
+        lore.add("§5§lEnder Speed: §7RMB + LMB + RMB");
         lore.add("");
         enderKatanaMeta.setLore(lore);
         enderKatanaMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
@@ -128,10 +141,11 @@ public class WeaponCreator {
         List<String> lore = new ArrayList<>();
         lore.add("§4Fill it with the blood of your enemies.");
         lore.add("");
-        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: ");
         lore.add("§4§lDamage: ");
         lore.add("");
-        lore.add("§4Berserk Mode: §7Shift + RMB");
+        lore.add("§4§lBerserk Mode: §7Shift + RMB");
         lore.add("");
         bloodyDeathMeta.setLore(lore);
         bloodyDeathMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
@@ -149,10 +163,11 @@ public class WeaponCreator {
         List<String> lore = new ArrayList<>();
         lore.add("§fThis weapon is capable of cutting even a soul.");
         lore.add("");
-        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: ");
         lore.add("§4§lDamage: ");
         lore.add("");
-        lore.add("§fSoul Butcher: §7RMB");
+        lore.add("§f§lSoul Butcher: §7RMB");
         lore.add("");
         legendaryKatanaMeta.setLore(lore);
         legendaryKatanaMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
@@ -171,10 +186,11 @@ public class WeaponCreator {
         lore.add("§5Legend has it that this blade was forged by the gods themselves,");
         lore.add("§5imbued with the very essence of the cosmos.");
         lore.add("");
-        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: ");
         lore.add("§4§lDamage: ");
         lore.add("");
-        lore.add("§fTornado: §7RMB");
+        lore.add("§f§lTornado: §7RMB");
         lore.add("");
         mythicBladeMeta.setLore(lore);
         mythicBladeMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
@@ -194,10 +210,11 @@ public class WeaponCreator {
         lore.add("§eLegends say that this sword has gone through many wars.");
         lore.add("§eAnd he won each one.");
         lore.add("");
-        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: ");
         lore.add("§4§lDamage: ");
         lore.add("");
-        lore.add("§cTeam Regeneration: §7RMB");
+        lore.add("§c§lTeam Regeneration: §7RMB");
         lore.add("");
         legendarySwordMeta.setLore(lore);
         legendarySwordMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
@@ -216,7 +233,8 @@ public class WeaponCreator {
         lore.add("The Sword of Heroes was created in the midst of a great war,");
         lore.add("where its owner was the last bastion in the defense of his people.");
         lore.add("");
-        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: ");
         lore.add("§4§lDamage: ");
         lore.add("");
         lore.add("");
@@ -237,7 +255,8 @@ public class WeaponCreator {
         List<String> lore = new ArrayList<>();
         lore.add("§cFresh from §6the §eoven fire.");
         lore.add("");
-        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: ");
         lore.add("§4§lDamage: ");
         lore.add("");
         lore.add("");
@@ -259,7 +278,8 @@ public class WeaponCreator {
         List<String> lore = new ArrayList<>();
         lore.add("§7Skilled blacksmiths put their hand to this sword.");
         lore.add("");
-        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: ");
         lore.add("§4§lDamage: ");
         lore.add("");
         lore.add("");
