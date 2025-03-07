@@ -38,6 +38,7 @@ import org.example.dmytrok.dkserverplugin.UTILS.BossDefeatMenu;
 import org.example.dmytrok.dkserverplugin.UTILS.LastDropCommand;
 import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.ScoreboardManager;
 import org.example.dmytrok.dkserverplugin.UTILS.PlayerDeath;
+import org.example.dmytrok.dkserverplugin.UTILS.Stamina;
 
 public final class DK_Server_Plugin extends JavaPlugin {
 
@@ -52,6 +53,7 @@ public final class DK_Server_Plugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ScoreboardManager(), this);
         getServer().getPluginManager().registerEvents(new BossDefeatMenu(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
+        getServer().getPluginManager().registerEvents(new Stamina(), this);
         //UTILS
 
         //SWORDS
@@ -93,10 +95,12 @@ public final class DK_Server_Plugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BackpackEvents(), this);
         getServer().getPluginManager().registerEvents(new BackpackCommand(), this);
         //MENU
+
         getServer().getPluginManager().registerEvents(new TwoSwordsRule(), this);
 
 
         getServer().getPluginManager().registerEvents(new TradeEvent(), this);
+
 
         if(getCommand("adminMenu") != null) {
             getCommand("adminMenu").setExecutor(new AdminMenuCommand());
