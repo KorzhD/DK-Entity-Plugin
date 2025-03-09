@@ -1,4 +1,4 @@
-package org.example.dmytrok.dkserverplugin.ITEMS.weaponBows.notready;
+package org.example.dmytrok.dkserverplugin.ITEMS.weaponBows;
 
 import org.bukkit.*;
 import org.bukkit.entity.*;
@@ -7,14 +7,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.example.dmytrok.dkserverplugin.DK_Server_Plugin;
 import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelCheck;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class WoodenBow implements Listener {

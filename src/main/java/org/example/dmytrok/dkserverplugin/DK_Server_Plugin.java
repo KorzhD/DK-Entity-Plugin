@@ -16,7 +16,7 @@ import org.example.dmytrok.dkserverplugin.ITEMS.accessories.RingOfSpatialRift;
 import org.example.dmytrok.dkserverplugin.ITEMS.bossKiller.BossKillerSwordCommand;
 import org.example.dmytrok.dkserverplugin.ENTITY.bosses.zombiebossMonarch.ZombieBossCommand;
 import org.example.dmytrok.dkserverplugin.ENTITY.bosses.zombiebossMonarch.ZombieBossEvent;
-import org.example.dmytrok.dkserverplugin.ITEMS.weaponBows.notready.WoodenBow;
+import org.example.dmytrok.dkserverplugin.ITEMS.weaponBows.WoodenBow;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.*;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.EnderKatana;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.BloodyDeath;
