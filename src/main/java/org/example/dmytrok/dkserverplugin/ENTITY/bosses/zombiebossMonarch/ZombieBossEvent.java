@@ -45,20 +45,34 @@ public class ZombieBossEvent implements Listener {
         ItemStack rareDrop20 = new ItemStack(Material.AIR);
         ItemStack rareDrop21 = new ItemStack(Material.AIR);
         ItemStack rareDrop22 = new ItemStack(Material.AIR);
+        ItemStack rareDrop23 = new ItemStack(Material.AIR);
+        ItemStack rareDrop24 = new ItemStack(Material.AIR);
+        ItemStack rareDrop25 = new ItemStack(Material.AIR);
+        ItemStack rareDrop26 = new ItemStack(Material.AIR);
+        ItemStack rareDrop27 = new ItemStack(Material.AIR);
+        ItemStack rareDrop28 = new ItemStack(Material.AIR);
+        ItemStack rareDrop29 = new ItemStack(Material.AIR);
         Random random = new Random();
         int dropChance = random.nextInt(2);
         if(dropChance <= 1) {
             rareDrop12 = BowCreator.getWoodenBow();
-            //    rareDrop13 = BowCreator.
-            // rareDrop14 = BowCreator.
-            //rareDrop15 = BowCreator.
-            //rareDrop16 = BowCreator.
-            //rareDrop17 = BowCreator.
-            //rareDrop18 = BowCreator.
-            //rareDrop19 = BowCreator.
-            //rareDrop20 = BowCreator.
-            //rareDrop21 = BowCreator.
-            //rareDrop22 = BowCreator.
+            rareDrop13 = BowCreator.getEpicBow();
+            rareDrop14 = BowCreator.getHeroBow();
+            rareDrop15 = BowCreator.getLegendaryBow();
+            rareDrop16 = BowCreator.getMythicBow();
+            rareDrop17 = BowCreator.getSoulSlayer();
+            rareDrop18 = BowCreator.getFireBow();
+            rareDrop19 = BowCreator.getBerserk();
+            rareDrop20 = BowCreator.getTheVoidEnd();
+            rareDrop21 = BowCreator.getDemonBow();
+            rareDrop22 = BowCreator.getDemonSoul();
+            rareDrop23 = BowCreator.getIcedBow();
+            rareDrop24 = BowCreator.getFrozenFang();
+            rareDrop25 = BowCreator.getHollowBow();
+            rareDrop26 = BowCreator.getLurkingShadow();
+            rareDrop27 = BowCreator.getThePiercerOfSins();
+            rareDrop28 = BowCreator.getLordOfLightning();
+            rareDrop29 = BowCreator.getBloodthirsty();
         }
         //Drop
 
@@ -73,7 +87,14 @@ public class ZombieBossEvent implements Listener {
                 rareDrop19,
                 rareDrop20,
                 rareDrop21,
-                rareDrop22
+                rareDrop22,
+                rareDrop23,
+                rareDrop24,
+                rareDrop25,
+                rareDrop26,
+                rareDrop27,
+                rareDrop28,
+                rareDrop29
         };
 
         List<ItemStack> loot = getLootList(itemStacks);

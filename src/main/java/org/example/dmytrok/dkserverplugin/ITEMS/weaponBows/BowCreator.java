@@ -1,6 +1,7 @@
 package org.example.dmytrok.dkserverplugin.ITEMS.weaponBows;
 
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -11,12 +12,12 @@ import java.util.List;
 public class BowCreator {
 
     public static ItemStack getBloodthirsty() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Bloodthirsty");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack  bloodthirsty = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta  bloodthirstyMeta =  bloodthirsty.getItemMeta();
+         bloodthirstyMeta.setDisplayName("Bloodthirsty");
+         bloodthirstyMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -24,19 +25,20 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+         bloodthirstyMeta.setLore(lore);
+         bloodthirstyMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+         bloodthirstyMeta.addEnchant(Enchantment.LUCK, 1, true);
+         bloodthirsty.setItemMeta( bloodthirstyMeta);
+        return  bloodthirsty;
     }
     public static ItemStack getLordOfLightning() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Lord of Lightning");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack lol = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta lolMeta = lol.getItemMeta();
+        lolMeta.setDisplayName("Lord of Lightning");
+        lolMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -44,20 +46,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        lolMeta.setLore(lore);
+        lolMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        lolMeta.addEnchant(Enchantment.LUCK, 1, true);
+        lol.setItemMeta(lolMeta);
+        return lol;
     }
 
     public static ItemStack getThePiercerOfSins() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("The Piercer of Sins");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack tpos = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta tposMeta = tpos.getItemMeta();
+        tposMeta.setDisplayName("The Piercer of Sins");
+        tposMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -65,20 +68,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        tposMeta.setLore(lore);
+        tposMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        tposMeta.addEnchant(Enchantment.LUCK, 1, true);
+        tpos.setItemMeta(tposMeta);
+        return tpos;
     }
 
     public static ItemStack getLurkingShadow() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Lurking Shadow");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack lurkingShadow = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta lurkingShadowMeta = lurkingShadow.getItemMeta();
+        lurkingShadowMeta.setDisplayName("Lurking Shadow");
+        lurkingShadowMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -86,20 +90,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        lurkingShadowMeta.setLore(lore);
+        lurkingShadowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        lurkingShadowMeta.addEnchant(Enchantment.LUCK, 1, true);
+        lurkingShadow.setItemMeta(lurkingShadowMeta);
+        return lurkingShadow;
     }
 
     public static ItemStack getHollowBow() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Hollow Bow");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack hollowBow = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta hollowBowMeta = hollowBow.getItemMeta();
+        hollowBowMeta.setDisplayName("Hollow Bow");
+        hollowBowMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -107,20 +112,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        hollowBowMeta.setLore(lore);
+        hollowBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        hollowBowMeta.addEnchant(Enchantment.LUCK, 1, true);
+        hollowBow.setItemMeta(hollowBowMeta);
+        return hollowBow;
     }
 
     public static ItemStack getFrozenFang() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Frozen Fang");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack frozenFang = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta frozenFangMeta = frozenFang.getItemMeta();
+        frozenFangMeta.setDisplayName("Frozen Fang");
+        frozenFangMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -128,20 +134,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        frozenFangMeta.setLore(lore);
+        frozenFangMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        frozenFangMeta.addEnchant(Enchantment.LUCK, 1, true);
+        frozenFang.setItemMeta(frozenFangMeta);
+        return frozenFang;
     }
 
     public static ItemStack getIcedBow() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Iced Bow");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack icedBow = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta icedBowMeta = icedBow.getItemMeta();
+        icedBowMeta.setDisplayName("Iced Bow");
+        icedBowMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -149,20 +156,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        icedBowMeta.setLore(lore);
+        icedBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        icedBowMeta.addEnchant(Enchantment.LUCK, 1, true);
+        icedBow.setItemMeta(icedBowMeta);
+        return icedBow;
     }
 
     public static ItemStack getDemonSoul() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Demon Soul");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack demonSoul = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta demonSoulMeta = demonSoul.getItemMeta();
+        demonSoulMeta.setDisplayName("Demon Soul");
+        demonSoulMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -170,20 +178,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        demonSoulMeta.setLore(lore);
+        demonSoulMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        demonSoulMeta.addEnchant(Enchantment.LUCK, 1, true);
+        demonSoul.setItemMeta(demonSoulMeta);
+        return demonSoul;
     }
 
     public static ItemStack getDemonBow() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Demon Bow");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack demonBow = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta demonBowMeta = demonBow.getItemMeta();
+        demonBowMeta.setDisplayName("Demon Bow");
+        demonBowMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -191,20 +200,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        demonBowMeta.setLore(lore);
+        demonBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        demonBowMeta.addEnchant(Enchantment.LUCK, 1, true);
+        demonBow.setItemMeta(demonBowMeta);
+        return demonBow;
     }
 
     public static ItemStack getTheVoidEnd() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("The Void End");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack theVoidEnd = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta theVoidEndMeta = theVoidEnd.getItemMeta();
+        theVoidEndMeta.setDisplayName("The Void End");
+        theVoidEndMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -212,20 +222,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        theVoidEndMeta.setLore(lore);
+        theVoidEndMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        theVoidEndMeta.addEnchant(Enchantment.LUCK, 1, true);
+        theVoidEnd.setItemMeta(theVoidEndMeta);
+        return theVoidEnd;
     }
 
     public static ItemStack getBerserk() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Berserk");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack berserk = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta berserkMeta = berserk.getItemMeta();
+        berserkMeta.setDisplayName("Berserk");
+        berserkMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -233,20 +244,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        berserkMeta.setLore(lore);
+        berserkMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        berserkMeta.addEnchant(Enchantment.LUCK, 1, true);
+        berserk.setItemMeta(berserkMeta);
+        return berserk;
     }
 
     public static ItemStack getSoulSlayer() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Soul Slayer");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack soulSlayer = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta soulSlayerMeta = soulSlayer.getItemMeta();
+        soulSlayerMeta.setDisplayName("Soul Slayer");
+        soulSlayerMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -254,20 +266,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        soulSlayerMeta.setLore(lore);
+        soulSlayerMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        soulSlayerMeta.addEnchant(Enchantment.LUCK, 1, true);
+        soulSlayer.setItemMeta(soulSlayerMeta);
+        return soulSlayer;
     }
 
     public static ItemStack getMythicBow() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Mythic Bow");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack mythicBow = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta mythicBowMeta = mythicBow.getItemMeta();
+        mythicBowMeta.setDisplayName("Mythic Bow");
+        mythicBowMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -275,20 +288,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        mythicBowMeta.setLore(lore);
+        mythicBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        mythicBowMeta.addEnchant(Enchantment.LUCK, 1, true);
+        mythicBow.setItemMeta(mythicBowMeta);
+        return mythicBow;
     }
 
     public static ItemStack getLegendaryBow() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Legendary Bow");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack legendaryBow = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta legendaryBowMeta = legendaryBow.getItemMeta();
+        legendaryBowMeta.setDisplayName("Legendary Bow");
+        legendaryBowMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -296,20 +310,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        legendaryBowMeta.setLore(lore);
+        legendaryBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        legendaryBowMeta.addEnchant(Enchantment.LUCK, 1, true);
+        legendaryBow.setItemMeta(legendaryBowMeta);
+        return legendaryBow;
     }
 
     public static ItemStack getHeroBow() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Hero Bow");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack heroBow = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta heroBowMeta = heroBow.getItemMeta();
+        heroBowMeta.setDisplayName("Hero Bow");
+        heroBowMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -317,20 +332,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        heroBowMeta.setLore(lore);
+        heroBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        heroBowMeta.addEnchant(Enchantment.LUCK, 1, true);
+        heroBow.setItemMeta(heroBowMeta);
+        return heroBow;
     }
 
     public static ItemStack getFireBow() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Fire Bow");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack fireBow = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta fireBowMeta = fireBow.getItemMeta();
+        fireBowMeta.setDisplayName("Fire Bow");
+        fireBowMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -338,20 +354,21 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        fireBowMeta.setLore(lore);
+        fireBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        fireBowMeta.addEnchant(Enchantment.FIRE_ASPECT, 1, true);
+        fireBow.setItemMeta(fireBowMeta);
+        return fireBow;
     }
 
     public static ItemStack getEpicBow() {
-        ItemStack woodenBow = new ItemStack(Material.WOOD_SWORD);
-        ItemMeta woodenBowMeta = woodenBow.getItemMeta();
-        woodenBowMeta.setDisplayName("Epic Bow");
-        woodenBowMeta.setUnbreakable(true);
+        ItemStack epicBow = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta epicBowMeta = epicBow.getItemMeta();
+        epicBowMeta.setDisplayName("Epic Bow");
+        epicBowMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("");
+        lore.add("///");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
@@ -359,11 +376,12 @@ public class BowCreator {
         lore.add("");
         lore.add("");
         lore.add("");
-        woodenBowMeta.setLore(lore);
-        woodenBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+        epicBowMeta.setLore(lore);
+        epicBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
-        woodenBow.setItemMeta(woodenBowMeta);
-        return woodenBow;
+        epicBowMeta.addEnchant(Enchantment.LUCK, 1, true);
+        epicBow.setItemMeta(epicBowMeta);
+        return epicBow;
     }
 
     public static ItemStack getWoodenBow() {
