@@ -19,8 +19,8 @@ public class AccessoriesCreator {
         lore.add("§3A shard of ancient ice, imbued with the power of eternal winter.");
         lore.add("§3Freezes enemies and grants fire resistance.");
         lore.add("");
-        lore.add("§d§lRarity: ");
-        lore.add("§a§lLvl: ");
+        lore.add("§d§lRarity: §eLegendary");
+        lore.add("§a§lLvl: §e1");
         lore.add("");
         lore.add("");
         iceCoreMeta.setLore(lore);
@@ -39,8 +39,8 @@ public class AccessoriesCreator {
         lore.add("§bAn all-seeing eye trapped in an icy crystal.");
         lore.add("§bIts magic distorts space, making the wearer immune to arrows.");
         lore.add("");
-        lore.add("§d§lRarity: ");
-        lore.add("§a§lLvl: ");
+        lore.add("§d§lRarity: §5Epic");
+        lore.add("§a§lLvl: §e1");
         lore.add("");
         lore.add("");
         frozenEyeMeta.setLore(lore);
@@ -59,8 +59,8 @@ public class AccessoriesCreator {
         lore.add("§8A ring that erases the line between life and shadow.");
         lore.add("§8The lower your health, the stronger your defense.");
         lore.add("");
-        lore.add("§d§lRarity: ");
-        lore.add("§a§lLvl: ");
+        lore.add("§d§lRarity: §eLegendary");
+        lore.add("§a§lLvl: §e1");
         lore.add("");
         lore.add("");
         ringOfTheFacelessMeta.setLore(lore);
@@ -79,8 +79,8 @@ public class AccessoriesCreator {
         lore.add("§7Dark energy within this ring fuels unrelenting fury.");
         lore.add("§7The lower your health, the stronger your attacks.");
         lore.add("");
-        lore.add("§d§lRarity: ");
-        lore.add("§a§lLvl: ");
+        lore.add("§d§lRarity: §5Epic");
+        lore.add("§a§lLvl: §e1");
         lore.add("");
         lore.add("");
         gloomOfTheSoulMeta.setLore(lore);
@@ -98,8 +98,8 @@ public class AccessoriesCreator {
         lore.add("§4The fiery judge punishes all who approach.");
         lore.add("§4Its flames ignite everything around.");
         lore.add("");
-        lore.add("§d§lRarity: ");
-        lore.add("§a§lLvl: ");
+        lore.add("§d§lRarity: §eLegendary");
+        lore.add("§a§lLvl: §e1");
         lore.add("");
         lore.add("");
         flameJudgeRingMeta.setLore(lore);
@@ -118,8 +118,8 @@ public class AccessoriesCreator {
         lore.add("§cA fragment of an ancient dragon's fury.");
         lore.add("§cEvery attack is imbued with fire.");
         lore.add("");
-        lore.add("§d§lRarity: ");
-        lore.add("§a§lLvl: ");
+        lore.add("§d§lRarity: §5Epic");
+        lore.add("§a§lLvl: §e1");
         lore.add("");
         lore.add("");
         dragonsSparkRingMeta.setLore(lore);
@@ -138,8 +138,8 @@ public class AccessoriesCreator {
         lore.add("§5Gazing into the abyss, one sees infinite possibilities...");
         lore.add("§510% chance to escape death.");
         lore.add("");
-        lore.add("§d§lRarity: ");
-        lore.add("§a§lLvl: ");
+        lore.add("§d§lRarity: §eLegendary");
+        lore.add("§a§lLvl: §e1");
         lore.add("");
         lore.add("");
         eyeOfTheVoidMeta.setLore(lore);
@@ -158,8 +158,8 @@ public class AccessoriesCreator {
         lore.add("§dBends space itself, allowing the wearer to leap to incredible heights.");
         lore.add("§dEach jump leaves behind faint traces of distorted reality.");
         lore.add("");
-        lore.add("§d§lRarity: ");
-        lore.add("§a§lLvl: ");
+        lore.add("§d§lRarity: §5Epic");
+        lore.add("§a§lLvl: §e1");
         lore.add("");
         lore.add("");
         eyeOfTheVoidMeta.setLore(lore);

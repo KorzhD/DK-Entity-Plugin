@@ -26,8 +26,11 @@ public class FrostScythe implements Listener {
         if (!(isWoodSword(player.getInventory().getItemInMainHand()))) {
             return;
         }
-        if (!(player.getInventory().getItemInMainHand().getItemMeta() != null &&
-                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Frost Scythe"))) {
+        ItemStack item = player.getInventory().getItemInMainHand();
+        if (item == null || !item.hasItemMeta() || item.getItemMeta().getDisplayName() == null) {
+            return;
+        }
+        if (!item.getItemMeta().getDisplayName().equals("Frost Scythe")) {
             return;
         }
         if (!(event.getAction() == Action.RIGHT_CLICK_AIR) && !(event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
