@@ -83,14 +83,5 @@ public class SoulSlayer  implements Listener {
     private void setCooldown(Player player) {
         cooldowns.put(player, System.currentTimeMillis());
     }
-    private long getCooldownTimeLeft(Player player) {
-        if (!cooldowns.containsKey(player)) {
-            return 0;
-        }
-        long lastUsed = cooldowns.get(player);
-        long currentTime = System.currentTimeMillis();
-        long timeLeft = cooldownTime - (currentTime - lastUsed);
-        return Math.max(0, timeLeft / 1000);
-    }
 }
 
