@@ -10,6 +10,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
+import org.example.dmytrok.dkserverplugin.ITEMS.accessories.AccessoriesCreator;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.WeaponCreator;
 import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelSystem;
 import org.example.dmytrok.dkserverplugin.UTILS.BossDefeatMenu;
@@ -44,8 +45,14 @@ public class ZombieBossEvent implements Listener {
         ItemStack rareDrop9 = new ItemStack(Material.AIR);
         ItemStack rareDrop10 = new ItemStack(Material.AIR);
         ItemStack rareDrop11 = new ItemStack(Material.AIR);
-      //  ItemStack rareDrop12 = new ItemStack(Material.AIR);
-      //  ItemStack rareDrop13 = new ItemStack(Material.AIR);
+        ItemStack rareDrop12 = new ItemStack(Material.AIR);
+        ItemStack rareDrop13 = new ItemStack(Material.AIR);
+        ItemStack rareDrop14 = new ItemStack(Material.AIR);
+        ItemStack rareDrop15 = new ItemStack(Material.AIR);
+        ItemStack rareDrop16 = new ItemStack(Material.AIR);
+        ItemStack rareDrop17 = new ItemStack(Material.AIR);
+        ItemStack rareDrop18 = new ItemStack(Material.AIR);
+        ItemStack rareDrop19 = new ItemStack(Material.AIR);
         Random random = new Random();
         int dropChance = random.nextInt(2);
         if(dropChance <= 1) {
@@ -61,6 +68,14 @@ public class ZombieBossEvent implements Listener {
             rareDrop9 = WeaponCreator.getDemonSlayer();
             rareDrop10 = WeaponCreator.getMoonlight();
             rareDrop11 = WeaponCreator.getFrostScythe();
+            rareDrop12 = AccessoriesCreator.getGloomOfTheSoul();
+            rareDrop13 = AccessoriesCreator.getRingOfTheFaceless();
+            rareDrop14 = AccessoriesCreator.getRingOfSpatialRift();
+            rareDrop15 = AccessoriesCreator.getEyeOfTheVoid();
+            rareDrop16 = AccessoriesCreator.getDragonsSparkRing();
+            rareDrop17 = AccessoriesCreator.getFlameJudgeRing();
+            rareDrop18 = AccessoriesCreator.getFrozenEyeRing();
+            rareDrop19 = AccessoriesCreator.getIceCoreRing();
         }
         //Drop
 
@@ -76,7 +91,15 @@ public class ZombieBossEvent implements Listener {
                 rareDrop8,
                 rareDrop9,
                 rareDrop10,
-                rareDrop11
+                rareDrop11,
+                rareDrop12,
+                rareDrop13,
+                rareDrop14,
+                rareDrop15,
+                rareDrop16,
+                rareDrop17,
+                rareDrop18,
+                rareDrop19
         };
 
         List<ItemStack> loot = getLootList(itemStacks);
@@ -110,6 +133,7 @@ public class ZombieBossEvent implements Listener {
 
         Player attacker = (Player) event.getDamager();
         double damage = event.getDamage();
+        attacker.sendMessage(String.valueOf(damage));
 
         if(!damagerPlayers.containsKey(attacker)) {
             damagerPlayers.put(attacker, damage);
