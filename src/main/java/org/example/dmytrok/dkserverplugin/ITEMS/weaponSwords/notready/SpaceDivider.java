@@ -50,7 +50,7 @@ public class SpaceDivider implements Listener {
     }
 
     private void spawnSwordsAroundPlayer(Player player) {
-        player.sendTitle("§6§lCombo!", "§6Gate to the Armory", 15, 15, 15);
+        player.sendTitle("§6§lCombo!", "§dGate to the Armory", 15, 15, 15);
         player.playSound(player.getLocation(), Sound.ENTITY_ENDEREYE_DEATH, 3, 1);
         List<ArmorStand> swords = new ArrayList<>();
         World world = player.getWorld();
@@ -67,7 +67,7 @@ public class SpaceDivider implements Listener {
             sword.setArms(true);
             ItemStack swordStack = new ItemStack(Material.WOOD_SWORD);
             ItemMeta swordMeta = swordStack.getItemMeta();
-            swordMeta.setDisplayName("");
+            swordMeta.setDisplayName("Space Divider");
             swordStack.setItemMeta(swordMeta);
             sword.setItemInHand(swordStack);
 

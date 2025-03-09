@@ -34,11 +34,8 @@ import org.example.dmytrok.dkserverplugin.MENU.playermenu.personalAccount.Person
 import org.example.dmytrok.dkserverplugin.MENU.playermenu.personalAccount.PersonalAccountEvents;
 import org.example.dmytrok.dkserverplugin.MENU.tradesystem.TradeCommand;
 import org.example.dmytrok.dkserverplugin.MENU.tradesystem.TradeEvent;
-import org.example.dmytrok.dkserverplugin.UTILS.BossDefeatMenu;
-import org.example.dmytrok.dkserverplugin.UTILS.LastDropCommand;
+import org.example.dmytrok.dkserverplugin.UTILS.*;
 import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.ScoreboardManager;
-import org.example.dmytrok.dkserverplugin.UTILS.PlayerDeath;
-import org.example.dmytrok.dkserverplugin.UTILS.Stamina;
 
 public final class DK_Server_Plugin extends JavaPlugin {
 
