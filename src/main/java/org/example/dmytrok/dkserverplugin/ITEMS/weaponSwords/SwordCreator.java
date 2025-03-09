@@ -11,6 +11,72 @@ import java.util.List;
 
 public class SwordCreator {
 
+    public static ItemStack getHeavenWarriorsBlade() {
+        ItemStack heavenWarriorsBlade = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta heavenWarriorsBladeMeta = heavenWarriorsBlade.getItemMeta();
+        heavenWarriorsBladeMeta.setDisplayName("Heaven Warrior's Blade");
+        heavenWarriorsBladeMeta.setUnbreakable(true);
+        List<String> lore = new ArrayList<>();
+        lore.add("");
+        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: §e");
+        lore.add("§4§lDamage: §7");
+        lore.add("");
+        lore.add("//");
+        lore.add("");
+        heavenWarriorsBladeMeta.setLore(lore);
+        heavenWarriorsBladeMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES,
+                ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
+        heavenWarriorsBladeMeta.addEnchant(Enchantment.DAMAGE_ALL,41, true);
+        heavenWarriorsBlade.setItemMeta(heavenWarriorsBladeMeta);
+        return heavenWarriorsBlade;
+    }
+
+    public static ItemStack getThunderer() {
+        ItemStack thunderer = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta thundererMeta = thunderer.getItemMeta();
+        thundererMeta.setDisplayName("Thunderer");
+        thundererMeta.setUnbreakable(true);
+        List<String> lore = new ArrayList<>();
+        lore.add("");
+        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: §e");
+        lore.add("§4§lDamage: §7");
+        lore.add("");
+        lore.add("//");
+        lore.add("");
+        thundererMeta.setLore(lore);
+        thundererMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES,
+                ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
+        thundererMeta.addEnchant(Enchantment.DAMAGE_ALL,41, true);
+        thunderer.setItemMeta(thundererMeta);
+        return thunderer;
+    }
+
+    public static ItemStack getBloodySeeker() {
+        ItemStack bloodySeeker = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta bloodySeekerMeta = bloodySeeker.getItemMeta();
+        bloodySeekerMeta.setDisplayName("Bloody Seeker");
+        bloodySeekerMeta.setUnbreakable(true);
+        List<String> lore = new ArrayList<>();
+        lore.add("");
+        lore.add("");
+        lore.add("§d§lRarity: ");
+        lore.add("§a§lLvl: §e");
+        lore.add("§4§lDamage: §7");
+        lore.add("");
+        lore.add("//");
+        lore.add("");
+        bloodySeekerMeta.setLore(lore);
+        bloodySeekerMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES,
+                ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
+        bloodySeekerMeta.addEnchant(Enchantment.DAMAGE_ALL,41, true);
+        bloodySeeker.setItemMeta(bloodySeekerMeta);
+        return bloodySeeker;
+    }
+
     public static ItemStack getShadowScythe() {
         ItemStack shadowScythe = new ItemStack(Material.WOOD_SWORD);
         ItemMeta shadowScytheMeta = shadowScythe.getItemMeta();
