@@ -31,7 +31,7 @@ public class WeaponCreator {
         lore.add("§l§bCapable of cutting the highest mountain peaks.");
         lore.add("");
         lore.add("§d§lRarity: §eLegendary");
-        lore.add("§a§lLvl: ");
+        lore.add("§a§lLvl: §e45");
         lore.add("§4§lDamage: §732");
         lore.add("");
         lore.add("§b§lIce Snowflake: §7Shift + RMB");
@@ -52,7 +52,7 @@ public class WeaponCreator {
         lore.add("§bForged from icy peaks that fed on moonlight for eternity");
         lore.add("");
         lore.add("§d§lRarity: §5Epic");
-        lore.add("§a§lLvl: ");
+        lore.add("§a§lLvl: §e40");
         lore.add("§4§lDamage: §727");
         lore.add("");
         lore.add("§3§lShield of the Night: §7RMB");
@@ -74,7 +74,7 @@ public class WeaponCreator {
         lore.add("§l§4A blade soaked in demon blood, waiting for the next battle");
         lore.add("");
         lore.add("§d§lRarity: §eLegendary");
-        lore.add("§a§lLvl: ");
+        lore.add("§a§lLvl: §e29");
         lore.add("§4§lDamage: §729");
         lore.add("");
         lore.add("§4§lPentagram of Fire: §7LMB + RMB + LMB");
@@ -96,7 +96,7 @@ public class WeaponCreator {
         lore.add("§4Basic Attribute of the Demon King's Army");
         lore.add("");
         lore.add("§d§lRarity: §5Epic");
-        lore.add("§a§lLvl: ");
+        lore.add("§a§lLvl: §e27");
         lore.add("§4§lDamage: §726");
         lore.add("");
         lore.add("§8§lSuffocation: §7RMB + LMB + RMB");
@@ -119,7 +119,7 @@ public class WeaponCreator {
         lore.add("§5Comparable to teleportation...");
         lore.add("");
         lore.add("§d§lRarity: §eLegendary");
-        lore.add("§a§lLvl: ");
+        lore.add("§a§lLvl: §e25");
         lore.add("§4§lDamage: §725");
         lore.add("");
         lore.add("§5§lEnder Speed: §7RMB + LMB + RMB");
@@ -142,7 +142,7 @@ public class WeaponCreator {
         lore.add("§4Fill it with the blood of your enemies.");
         lore.add("");
         lore.add("§d§lRarity: §5Epic");
-        lore.add("§a§lLvl: ");
+        lore.add("§a§lLvl: §e20");
         lore.add("§4§lDamage: §722");
         lore.add("");
         lore.add("§4§lBerserk Mode: §7Shift + RMB");
@@ -164,7 +164,7 @@ public class WeaponCreator {
         lore.add("§fThis weapon is capable of cutting even a soul.");
         lore.add("");
         lore.add("§d§lRarity: §5Epic");
-        lore.add("§a§lLvl: ");
+        lore.add("§a§lLvl: §e17");
         lore.add("§4§lDamage: §720");
         lore.add("");
         lore.add("§f§lSoul Butcher: §7RMB");
@@ -187,7 +187,7 @@ public class WeaponCreator {
         lore.add("§5imbued with the very essence of the cosmos.");
         lore.add("");
         lore.add("§d§lRarity: §5Epic");
-        lore.add("§a§lLvl: ");
+        lore.add("§a§lLvl: §e15");
         lore.add("§4§lDamage: §717");
         lore.add("");
         lore.add("§f§lTornado: §7RMB");
@@ -211,7 +211,7 @@ public class WeaponCreator {
         lore.add("§eAnd he won each one.");
         lore.add("");
         lore.add("§d§lRarity: §2Uncommon");
-        lore.add("§a§lLvl: ");
+        lore.add("§a§lLvl: §e13");
         lore.add("§4§lDamage: §715");
         lore.add("");
         lore.add("§c§lTeam Regeneration: §7RMB");
@@ -234,7 +234,7 @@ public class WeaponCreator {
         lore.add("where its owner was the last bastion in the defense of his people.");
         lore.add("");
         lore.add("§d§lRarity: §2Uncommon");
-        lore.add("§a§lLvl: ");
+        lore.add("§a§lLvl: §e10");
         lore.add("§4§lDamage: §712");
         lore.add("");
         lore.add("");
@@ -256,7 +256,7 @@ public class WeaponCreator {
         lore.add("§cFresh from §6the §eoven fire.");
         lore.add("");
         lore.add("§d§lRarity: §8Common");
-        lore.add("§a§lLvl: ");
+        lore.add("§a§lLvl: §e6");
         lore.add("§4§lDamage: §79");
         lore.add("");
         lore.add("");
@@ -279,7 +279,7 @@ public class WeaponCreator {
         lore.add("§7Skilled blacksmiths put their hand to this sword.");
         lore.add("");
         lore.add("§d§lRarity: §8Common");
-        lore.add("§a§lLvl: ");
+        lore.add("§a§lLvl: §e5");
         lore.add("§4§lDamage: §77");
         lore.add("");
         lore.add("");
@@ -293,7 +293,24 @@ public class WeaponCreator {
     }
 
     public static ItemStack getSteelSword() {
-        return null;
+        ItemStack steelSword = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta steelSwordMeta = steelSword.getItemMeta();
+        steelSwordMeta.setDisplayName("Steel Sword");
+        steelSwordMeta.setUnbreakable(true);
+        List<String> lore = new ArrayList<>();
+        lore.add("§7Newbie sword");
+        lore.add("");
+        lore.add("§d§lRarity: §8Common");
+        lore.add("§a§lLvl: §e2");
+        lore.add("§4§lDamage: §74");
+        lore.add("");
+        lore.add("");
+        lore.add("");
+        steelSwordMeta.setLore(lore);
+        steelSwordMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
+                ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
+        steelSword.setItemMeta(steelSwordMeta);
+        return steelSword;
     }
 
 

@@ -133,7 +133,7 @@ public class AccessoriesCreator {
     public static ItemStack getEyeOfTheVoid() {
         ItemStack eyeOfTheVoid = new ItemStack(Material.CHORUS_FRUIT_POPPED);
         ItemMeta eyeOfTheVoidMeta = eyeOfTheVoid.getItemMeta();
-        eyeOfTheVoidMeta.setDisplayName("Eye Of The Void");
+        eyeOfTheVoidMeta.setDisplayName("Eye of The Void");
         List<String> lore = new ArrayList<>();
         lore.add("§5Gazing into the abyss, one sees infinite possibilities...");
         lore.add("§510% chance to escape death.");
