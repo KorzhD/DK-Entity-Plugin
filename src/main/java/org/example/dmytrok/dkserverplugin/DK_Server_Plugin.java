@@ -17,6 +17,7 @@ import org.example.dmytrok.dkserverplugin.ITEMS.bossKiller.BossKillerSwordComman
 import org.example.dmytrok.dkserverplugin.ENTITY.bosses.zombiebossMonarch.ZombieBossCommand;
 import org.example.dmytrok.dkserverplugin.ENTITY.bosses.zombiebossMonarch.ZombieBossEvent;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponBows.WoodenBow;
+import org.example.dmytrok.dkserverplugin.ITEMS.weaponBows.notready.*;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.*;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.EnderKatana;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.BloodyDeath;
@@ -24,6 +25,9 @@ import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.LegendaryKatana;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.MythicBlade;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.SpaceDivider;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.ShadowScythe;
+import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.notready.BloodySeeker;
+import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.notready.HeavenWarriorsBlade;
+import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.notready.Thunderer;
 import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelCheck;
 import org.example.dmytrok.dkserverplugin.MENU.adminMenu.AdminMenuCommand;
 import org.example.dmytrok.dkserverplugin.MENU.adminMenu.AdminMenuEvents;
@@ -59,6 +63,23 @@ public final class DK_Server_Plugin extends JavaPlugin {
 
         //BOWS
         getServer().getPluginManager().registerEvents(new WoodenBow(), this);
+        getServer().getPluginManager().registerEvents(new EpicBow(), this);
+        getServer().getPluginManager().registerEvents(new FireBow(), this);
+        getServer().getPluginManager().registerEvents(new HeroBow(), this);
+        getServer().getPluginManager().registerEvents(new LegendaryBow(), this);
+        getServer().getPluginManager().registerEvents(new MythicBow(), this);
+        getServer().getPluginManager().registerEvents(new SoulSlayer(), this);
+        getServer().getPluginManager().registerEvents(new DemonBow(), this);
+        getServer().getPluginManager().registerEvents(new DemonSoul(), this);
+        getServer().getPluginManager().registerEvents(new IcedBow(), this);
+        getServer().getPluginManager().registerEvents(new FrozenFang(), this);
+        getServer().getPluginManager().registerEvents(new Berserk(), this);
+        getServer().getPluginManager().registerEvents(new TheVoidEnd(), this);
+        getServer().getPluginManager().registerEvents(new HollowBow(), this);
+        getServer().getPluginManager().registerEvents(new LurkingShadow(), this);
+        getServer().getPluginManager().registerEvents(new ThePiercerOfSins(), this);
+        getServer().getPluginManager().registerEvents(new LordOfLightning(), this);
+        getServer().getPluginManager().registerEvents(new Bloodthirsty(), this);
         //BOWS
 
         //SWORDS
@@ -73,6 +94,9 @@ public final class DK_Server_Plugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new DemonSlayer(), this);
         getServer().getPluginManager().registerEvents(new Moonlight(), this);
         getServer().getPluginManager().registerEvents(new FrostScythe(), this);
+        getServer().getPluginManager().registerEvents(new Thunderer(), this);
+        getServer().getPluginManager().registerEvents(new HeavenWarriorsBlade(), this);
+        getServer().getPluginManager().registerEvents(new BloodySeeker(), this);
         //SWORDS
 
         //RINGS
