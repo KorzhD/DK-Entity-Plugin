@@ -11,6 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 import org.example.dmytrok.dkserverplugin.DK_Server_Plugin;
+import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelCheck;
 
 import java.util.*;
 
@@ -32,6 +33,10 @@ public class ShadowScythe implements Listener {
                 }
                 player.sendMessage("§4§lRecharge: " + getCooldownTimeLeft(player) + " sec");
                 player.playSound(player.getLocation(), Sound.ENTITY_CAT_HURT, 2, 1);
+                return;
+            }
+
+            if(LevelCheck.isLevelTooLow(player, item)) {
                 return;
             }
 

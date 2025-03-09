@@ -14,6 +14,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.example.dmytrok.dkserverplugin.DK_Server_Plugin;
+import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelCheck;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -43,6 +44,11 @@ public class BloodyDeath implements Listener {
             }
             player.sendMessage("§4§lRecharge: " + getCooldownTimeLeft(player) + " sec");
             player.playSound(player.getLocation(), Sound.ENTITY_CAT_HURT, 2, 1);
+            return;
+        }
+
+        ItemStack item = player.getInventory().getItemInMainHand();
+        if(LevelCheck.isLevelTooLow(player, item)) {
             return;
         }
 

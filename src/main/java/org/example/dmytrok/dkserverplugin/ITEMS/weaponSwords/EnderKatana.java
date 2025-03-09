@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 import org.example.dmytrok.dkserverplugin.DK_Server_Plugin;
+import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelCheck;
 
 import java.util.*;
 
@@ -36,6 +37,11 @@ public class EnderKatana implements Listener {
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && isOnCooldown(player)) {
             player.sendMessage("§4§lRecharge: " + getCooldownTimeLeft(player) + " sec");
             player.playSound(player.getLocation(), Sound.ENTITY_CAT_HURT, 2, 200);
+            return;
+        }
+
+        ItemStack item = player.getInventory().getItemInMainHand();
+        if(LevelCheck.isLevelTooLow(player, item)) {
             return;
         }
 

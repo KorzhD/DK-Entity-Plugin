@@ -11,6 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 import org.example.dmytrok.dkserverplugin.DK_Server_Plugin;
+import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelCheck;
 
 import java.util.*;
 
@@ -38,6 +39,11 @@ public class SpaceDivider implements Listener {
             player.playSound(player.getLocation(), Sound.ENTITY_CAT_HURT, 2, 1);
             return;
         }
+
+        if(LevelCheck.isLevelTooLow(player, item)) {
+            return;
+        }
+
         if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if(activeSwords.get(player.getUniqueId()) != null) {
                 return;

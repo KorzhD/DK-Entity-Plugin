@@ -9,6 +9,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.example.dmytrok.dkserverplugin.DK_Server_Plugin;
+import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelCheck;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +30,11 @@ public class MythicBlade implements Listener {
             return;
         }
         if (!(event.getAction() == Action.RIGHT_CLICK_AIR) && !(event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+            return;
+        }
+
+        ItemStack item = player.getInventory().getItemInMainHand();
+        if(LevelCheck.isLevelTooLow(player, item)) {
             return;
         }
 
