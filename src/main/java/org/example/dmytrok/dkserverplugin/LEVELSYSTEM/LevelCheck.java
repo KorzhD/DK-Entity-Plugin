@@ -1,6 +1,5 @@
 package org.example.dmytrok.dkserverplugin.LEVELSYSTEM;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
@@ -15,13 +14,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 
-public class SwordLevelCheck implements Listener {
+public class LevelCheck implements Listener {
 
-    private boolean isCustomSword(ItemStack item) {
+    private static boolean isCustomSword(ItemStack item) {
         return item != null && item.getType() == Material.WOOD_SWORD;
     }
 
-    private int getRequiredLevel(ItemStack item) {
+    private static int getRequiredLevel(ItemStack item) {
         if (!isCustomSword(item)) {
             return 0;
         }
@@ -45,7 +44,7 @@ public class SwordLevelCheck implements Listener {
         return 0;
     }
 
-    private boolean isLevelTooLow(Player player, ItemStack item) {
+    public static boolean isLevelTooLow(Player player, ItemStack item) {
         if (!isCustomSword(item))  {
             return false;
         }
@@ -89,4 +88,5 @@ public class SwordLevelCheck implements Listener {
             event.setCancelled(true);
         }
     }
+
 }

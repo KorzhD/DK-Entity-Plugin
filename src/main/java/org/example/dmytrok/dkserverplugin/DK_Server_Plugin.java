@@ -16,6 +16,7 @@ import org.example.dmytrok.dkserverplugin.ITEMS.accessories.RingOfSpatialRift;
 import org.example.dmytrok.dkserverplugin.ITEMS.bossKiller.BossKillerSwordCommand;
 import org.example.dmytrok.dkserverplugin.ENTITY.bosses.zombiebossMonarch.ZombieBossCommand;
 import org.example.dmytrok.dkserverplugin.ENTITY.bosses.zombiebossMonarch.ZombieBossEvent;
+import org.example.dmytrok.dkserverplugin.ITEMS.weaponBows.notready.WoodenBow;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.*;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.EnderKatana;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.BloodyDeath;
@@ -23,7 +24,7 @@ import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.LegendaryKatana;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.MythicBlade;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.SpaceDivider;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.ShadowScythe;
-import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.SwordLevelCheck;
+import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelCheck;
 import org.example.dmytrok.dkserverplugin.MENU.adminMenu.AdminMenuCommand;
 import org.example.dmytrok.dkserverplugin.MENU.adminMenu.AdminMenuEvents;
 import org.example.dmytrok.dkserverplugin.MENU.inventoryrules.TwoSwordsRule;
@@ -52,8 +53,13 @@ public final class DK_Server_Plugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BossDefeatMenu(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new Stamina(), this);
-        getServer().getPluginManager().registerEvents(new SwordLevelCheck(), this);
+        getServer().getPluginManager().registerEvents(new LevelCheck(), this);
+        getServer().getPluginManager().registerEvents(new ArrowDeleting(), this);
         //UTILS
+
+        //BOWS
+        getServer().getPluginManager().registerEvents(new WoodenBow(), this);
+        //BOWS
 
         //SWORDS
         getServer().getPluginManager().registerEvents(new SpaceDivider(), this);

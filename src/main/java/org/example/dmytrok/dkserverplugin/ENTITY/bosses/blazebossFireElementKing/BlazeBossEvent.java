@@ -12,7 +12,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelSystem;
-import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.WeaponCreator;
+import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.SwordCreator;
 import org.example.dmytrok.dkserverplugin.UTILS.BossDefeatMenu;
 import org.example.dmytrok.dkserverplugin.UTILS.CongratulationTitle;
 
@@ -39,13 +39,13 @@ public class BlazeBossEvent implements Listener {
         ItemStack rareDrop = new ItemStack(Material.AIR);
         int dropChance = random.nextInt(500);
         if (dropChance <= 5) {
-            rareDrop = WeaponCreator.getDemonSlayer();
+            rareDrop = SwordCreator.getDemonSlayer();
         }
 
         ItemStack rareDrop2 = new ItemStack(Material.AIR);
         int dropChance2 = random.nextInt(100);
         if (dropChance <= 5) {
-            rareDrop2 = WeaponCreator.getDemonBlade();
+            rareDrop2 = SwordCreator.getDemonBlade();
         }
         //Drop
 

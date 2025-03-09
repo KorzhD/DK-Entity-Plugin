@@ -9,7 +9,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeaponCreator {
+public class SwordCreator {
 
     public static ItemStack getShadowScythe() {
         ItemStack shadowScythe = new ItemStack(Material.WOOD_SWORD);

@@ -15,7 +15,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.example.dmytrok.dkserverplugin.DK_Server_Plugin;
 import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelSystem;
-import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.WeaponCreator;
+import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.SwordCreator;
 import org.example.dmytrok.dkserverplugin.UTILS.BossDefeatMenu;
 import org.example.dmytrok.dkserverplugin.UTILS.CongratulationTitle;
 
@@ -42,13 +42,13 @@ public class GolemBossEvent implements Listener {
         ItemStack rareDrop = new ItemStack(Material.AIR);
         int dropChance = random.nextInt(1000);
         if (dropChance <= 20) {
-            rareDrop = WeaponCreator.getFrostScythe();
+            rareDrop = SwordCreator.getFrostScythe();
         }
 
         ItemStack rareDrop2 = new ItemStack(Material.AIR);
         int dropChance2 = random.nextInt(500);
         if (dropChance <= 20) {
-            rareDrop2 = WeaponCreator.getMoonlight();
+            rareDrop2 = SwordCreator.getMoonlight();
         }
         //Drop
 

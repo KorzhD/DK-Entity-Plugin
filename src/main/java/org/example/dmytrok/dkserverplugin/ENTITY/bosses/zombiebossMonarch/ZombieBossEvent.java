@@ -11,7 +11,8 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.example.dmytrok.dkserverplugin.ITEMS.accessories.AccessoriesCreator;
-import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.WeaponCreator;
+import org.example.dmytrok.dkserverplugin.ITEMS.weaponBows.BowCreator;
+import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.SwordCreator;
 import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelSystem;
 import org.example.dmytrok.dkserverplugin.UTILS.BossDefeatMenu;
 import org.example.dmytrok.dkserverplugin.UTILS.CongratulationTitle;
@@ -47,17 +48,17 @@ public class ZombieBossEvent implements Listener {
         Random random = new Random();
         int dropChance = random.nextInt(2);
         if(dropChance <= 1) {
-            rareDrop12 = AccessoriesCreator.getGloomOfTheSoul();
-            rareDrop13 = AccessoriesCreator.getRingOfTheFaceless();
-            rareDrop14 = AccessoriesCreator.getRingOfSpatialRift();
-            rareDrop15 = AccessoriesCreator.getEyeOfTheVoid();
-            rareDrop16 = AccessoriesCreator.getDragonsSparkRing();
-            rareDrop17 = AccessoriesCreator.getFlameJudgeRing();
-            rareDrop18 = AccessoriesCreator.getFrozenEyeRing();
-            rareDrop19 = AccessoriesCreator.getIceCoreRing();
-            rareDrop20 = WeaponCreator.getSteelSword();
-            rareDrop21 = WeaponCreator.getSpaceDivider();
-            rareDrop22 = WeaponCreator.getShadowScythe();
+            rareDrop12 = BowCreator.getWoodenBow();
+            //    rareDrop13 = BowCreator.
+            // rareDrop14 = BowCreator.
+            //rareDrop15 = BowCreator.
+            //rareDrop16 = BowCreator.
+            //rareDrop17 = BowCreator.
+            //rareDrop18 = BowCreator.
+            //rareDrop19 = BowCreator.
+            //rareDrop20 = BowCreator.
+            //rareDrop21 = BowCreator.
+            //rareDrop22 = BowCreator.
         }
         //Drop
 
