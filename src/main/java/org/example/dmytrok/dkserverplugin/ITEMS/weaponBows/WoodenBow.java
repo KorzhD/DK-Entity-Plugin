@@ -29,7 +29,7 @@ public class WoodenBow implements Listener {
                 return;
             }
             ItemStack item = event.getItem();
-            if (!(event.getAction() == Action.RIGHT_CLICK_AIR)) {
+            if (!(event.getAction() == Action.RIGHT_CLICK_AIR) && !(event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
                 return;
             }
 
