@@ -61,7 +61,7 @@ public class SwordLevelCheck implements Listener {
             ItemStack item = player.getInventory().getItemInMainHand();
 
             if (isLevelTooLow(player, item)) {
-                player.sendTitle("§4§lToo low lvl!", "",15, 15, 15);
+                player.sendTitle("§4§lToo low lvl!", "§4Required lvl: " + getRequiredLevel(item),15, 15, 15);
                 player.playSound(player.getLocation(), Sound.ENTITY_CAT_HURT, 2, 200);
                 event.setCancelled(true);
             }
@@ -73,7 +73,7 @@ public class SwordLevelCheck implements Listener {
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
         if (isLevelTooLow(player, item)) {
-            player.sendTitle("§4§lToo low lvl!", "",15, 15, 15);
+            player.sendTitle("§4§lToo low lvl!", "§4Required lvl: " + getRequiredLevel(item),15, 15, 15);
             player.playSound(player.getLocation(), Sound.ENTITY_CAT_HURT, 2, 200);
             event.setCancelled(true);
         }
@@ -84,7 +84,7 @@ public class SwordLevelCheck implements Listener {
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItem(event.getNewSlot());
         if (isLevelTooLow(player, item)) {
-            player.sendTitle("§4§lToo low lvl!", "",15, 15, 15);
+            player.sendTitle("§4§lToo low lvl!", "§4Required lvl: " + getRequiredLevel(item),15, 15, 15);
             player.playSound(player.getLocation(), Sound.ENTITY_CAT_HURT, 2, 200);
             event.setCancelled(true);
         }

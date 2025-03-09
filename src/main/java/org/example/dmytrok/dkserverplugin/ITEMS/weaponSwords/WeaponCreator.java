@@ -12,11 +12,47 @@ import java.util.List;
 public class WeaponCreator {
 
     public static ItemStack getShadowScythe() {
-     return null;
+        ItemStack shadowScythe = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta shadowScytheMeta = shadowScythe.getItemMeta();
+        shadowScytheMeta.setDisplayName("Shadow Scythe");
+        shadowScytheMeta.setUnbreakable(true);
+        List<String> lore = new ArrayList<>();
+        lore.add("§8A weapon that can subvert gravity itself.");
+        lore.add("");
+        lore.add("§d§lRarity: §eLegendary");
+        lore.add("§a§lLvl: §e26");
+        lore.add("§4§lDamage: §727");
+        lore.add("");
+        lore.add("§8§lBlack Hole: §7RMB");
+        lore.add("");
+        shadowScytheMeta.setLore(lore);
+        shadowScytheMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES,
+                ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
+        shadowScytheMeta.addEnchant(Enchantment.DAMAGE_ALL,41, true);
+        shadowScythe.setItemMeta(shadowScytheMeta);
+        return shadowScythe;
     }
 
     public static ItemStack getSpaceDivider() {
-        return null;
+        ItemStack spaceDivider = new ItemStack(Material.WOOD_SWORD);
+        ItemMeta spaceDividerMeta = spaceDivider.getItemMeta();
+        spaceDividerMeta.setDisplayName("Space Divider");
+        spaceDividerMeta.setUnbreakable(true);
+        List<String> lore = new ArrayList<>();
+        lore.add("§dSlices through space, opening up your ability to use items from another reality");
+        lore.add("");
+        lore.add("§d§lRarity: §eLegendary");
+        lore.add("§a§lLvl: §e26");
+        lore.add("§4§lDamage: §727");
+        lore.add("");
+        lore.add("§d§lGate to the Armory: §7RMB");
+        lore.add("");
+        spaceDividerMeta.setLore(lore);
+        spaceDividerMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES,
+                ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
+        spaceDividerMeta.addEnchant(Enchantment.DAMAGE_ALL,41, true);
+        spaceDivider.setItemMeta(spaceDividerMeta);
+        return spaceDivider;
     }
 
 

@@ -54,6 +54,8 @@ public class ZombieBossEvent implements Listener {
         ItemStack rareDrop18 = new ItemStack(Material.AIR);
         ItemStack rareDrop19 = new ItemStack(Material.AIR);
         ItemStack rareDrop20 = new ItemStack(Material.AIR);
+        ItemStack rareDrop21 = new ItemStack(Material.AIR);
+        ItemStack rareDrop22 = new ItemStack(Material.AIR);
         Random random = new Random();
         int dropChance = random.nextInt(2);
         if(dropChance <= 1) {
@@ -78,6 +80,8 @@ public class ZombieBossEvent implements Listener {
             rareDrop18 = AccessoriesCreator.getFrozenEyeRing();
             rareDrop19 = AccessoriesCreator.getIceCoreRing();
             rareDrop20 = WeaponCreator.getSteelSword();
+            rareDrop21 = WeaponCreator.getSpaceDivider();
+            rareDrop22 = WeaponCreator.getShadowScythe();
         }
         //Drop
 
@@ -102,7 +106,9 @@ public class ZombieBossEvent implements Listener {
                 rareDrop17,
                 rareDrop18,
                 rareDrop19,
-                rareDrop20
+                rareDrop20,
+                rareDrop21,
+                rareDrop22
         };
 
         List<ItemStack> loot = getLootList(itemStacks);
