@@ -1,4 +1,4 @@
-package org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.notready;
+package org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords;
 
 import org.bukkit.*;
 import org.bukkit.entity.*;
