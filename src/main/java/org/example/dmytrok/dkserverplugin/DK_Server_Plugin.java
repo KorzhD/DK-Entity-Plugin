@@ -23,6 +23,7 @@ import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.LegendaryKatana;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.MythicBlade;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.notready.SpaceDivider;
 import org.example.dmytrok.dkserverplugin.ITEMS.weaponSwords.notready.ShadowScythe;
+import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.SwordLevelCheck;
 import org.example.dmytrok.dkserverplugin.MENU.adminMenu.AdminMenuCommand;
 import org.example.dmytrok.dkserverplugin.MENU.adminMenu.AdminMenuEvents;
 import org.example.dmytrok.dkserverplugin.MENU.inventoryrules.TwoSwordsRule;
@@ -51,6 +52,7 @@ public final class DK_Server_Plugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BossDefeatMenu(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new Stamina(), this);
+        getServer().getPluginManager().registerEvents(new SwordLevelCheck(), this);
         //UTILS
 
         //SWORDS

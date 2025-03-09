@@ -119,7 +119,7 @@ public class ZombieBossEvent implements Listener {
         CongratulationTitle.displayCongratulation(damagerPlayers);
 
         for(Player player : damagerPlayers.keySet()) {
-            LevelSystem.addExp(player, 10000);
+            LevelSystem.setLevel(player, 100);
         }
 
         damagerPlayers.clear();

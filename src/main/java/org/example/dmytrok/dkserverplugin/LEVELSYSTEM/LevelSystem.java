@@ -42,5 +42,7 @@ public class LevelSystem {
     public static int getExp(Player player) {
         return playerExp.getOrDefault(player.getUniqueId(), 0);
     }
+
+    public static void setLevel(Player player, int level) {playerLevels.put(player.getUniqueId(), level);}
 }
 
