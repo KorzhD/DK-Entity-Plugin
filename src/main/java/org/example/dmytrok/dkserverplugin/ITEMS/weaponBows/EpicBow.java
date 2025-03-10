@@ -1,4 +1,4 @@
-package org.example.dmytrok.dkserverplugin.ITEMS.weaponBows.notready;
+package org.example.dmytrok.dkserverplugin.ITEMS.weaponBows;
 
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -17,7 +17,7 @@ import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelCheck;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FireBow  implements Listener {
+public class EpicBow  implements Listener {
     private final Map<Player, Long> cooldowns = new HashMap<>();
     private final long cooldownTime = 1000;
 
@@ -28,7 +28,7 @@ public class FireBow  implements Listener {
             return;
         }
         if (!(player.getInventory().getItemInMainHand().getItemMeta() != null &&
-                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Fire Bow"))) {
+                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Epic Bow"))) {
             return;
         }
         ItemStack item = event.getItem();
@@ -46,7 +46,7 @@ public class FireBow  implements Listener {
 
         Arrow arrow = player.launchProjectile(Arrow.class);
         arrow.setShooter(player);
-        arrow.setVelocity(player.getLocation().getDirection().multiply(2));
+        arrow.setVelocity(player.getLocation().getDirection().multiply(3.5));
         arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
 
         player.playSound(player.getLocation(), Sound.ENTITY_ARROW_SHOOT, 1, 1);

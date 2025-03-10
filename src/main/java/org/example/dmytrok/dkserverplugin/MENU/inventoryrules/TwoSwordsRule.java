@@ -1,5 +1,6 @@
 package org.example.dmytrok.dkserverplugin.MENU.inventoryrules;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -100,14 +101,13 @@ public class TwoSwordsRule implements Listener {
     }
 
     private boolean isSword(ItemStack item) {
-        if(item != null && !(item.getType().equals(Material.AIR))) {
-            if (item.getType().equals(Material.DIAMOND_SWORD)
-                    || item.getType().equals(Material.IRON_SWORD)
-                    || item.getType().equals(Material.GOLD_SWORD)
-                    || item.getType().equals(Material.STONE_SWORD)
-                    || item.getType().equals(Material.WOOD_SWORD)) {
-                return true;
-            }
+        if (item != null && item.getType() != Material.AIR) {
+            Material type = item.getType();
+            return type == Material.DIAMOND_SWORD
+                    || type == Material.IRON_SWORD
+                    || type == Material.GOLD_SWORD
+                    || type == Material.STONE_SWORD
+                    || type == Material.WOOD_SWORD;
         }
         return false;
     }

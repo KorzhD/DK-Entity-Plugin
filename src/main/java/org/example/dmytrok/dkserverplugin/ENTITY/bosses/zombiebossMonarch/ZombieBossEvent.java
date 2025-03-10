@@ -122,6 +122,9 @@ public class ZombieBossEvent implements Listener {
         if (!(isMonarch(event.getEntity()))) {
             return;
         }
+        if (event.getDamager() instanceof Arrow) {
+            Bukkit.broadcastMessage(String.valueOf(event.getDamage()));
+        }
         if (!(event.getDamager() instanceof Player)) {
             return;
         }

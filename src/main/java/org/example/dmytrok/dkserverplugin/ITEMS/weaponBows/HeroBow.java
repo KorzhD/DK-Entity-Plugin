@@ -1,4 +1,4 @@
-package org.example.dmytrok.dkserverplugin.ITEMS.weaponBows.notready;
+package org.example.dmytrok.dkserverplugin.ITEMS.weaponBows;
 
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -17,7 +17,7 @@ import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelCheck;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EpicBow  implements Listener {
+public class HeroBow  implements Listener {
     private final Map<Player, Long> cooldowns = new HashMap<>();
     private final long cooldownTime = 1000;
 
@@ -28,7 +28,7 @@ public class EpicBow  implements Listener {
             return;
         }
         if (!(player.getInventory().getItemInMainHand().getItemMeta() != null &&
-                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Epic Bow"))) {
+                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Hero Bow"))) {
             return;
         }
         ItemStack item = event.getItem();
@@ -46,7 +46,7 @@ public class EpicBow  implements Listener {
 
         Arrow arrow = player.launchProjectile(Arrow.class);
         arrow.setShooter(player);
-        arrow.setVelocity(player.getLocation().getDirection().multiply(2));
+        arrow.setVelocity(player.getLocation().getDirection().multiply(6));
         arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
 
         player.playSound(player.getLocation(), Sound.ENTITY_ARROW_SHOOT, 1, 1);
@@ -84,4 +84,3 @@ public class EpicBow  implements Listener {
         cooldowns.put(player, System.currentTimeMillis());
     }
 }
-

@@ -46,7 +46,7 @@ public class LegendaryBow  implements Listener {
 
         Arrow arrow = player.launchProjectile(Arrow.class);
         arrow.setShooter(player);
-        arrow.setVelocity(player.getLocation().getDirection().multiply(2));
+        arrow.setVelocity(player.getLocation().getDirection().multiply(8.5));
         arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
 
         player.playSound(player.getLocation(), Sound.ENTITY_ARROW_SHOOT, 1, 1);

@@ -1,4 +1,4 @@
-package org.example.dmytrok.dkserverplugin.ITEMS.weaponBows.notready;
+package org.example.dmytrok.dkserverplugin.ITEMS.weaponBows;
 
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -17,7 +17,7 @@ import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelCheck;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HeroBow  implements Listener {
+public class FireBow  implements Listener {
     private final Map<Player, Long> cooldowns = new HashMap<>();
     private final long cooldownTime = 1000;
 
@@ -28,7 +28,7 @@ public class HeroBow  implements Listener {
             return;
         }
         if (!(player.getInventory().getItemInMainHand().getItemMeta() != null &&
-                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Hero Bow"))) {
+                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Fire Bow"))) {
             return;
         }
         ItemStack item = event.getItem();
@@ -46,10 +46,11 @@ public class HeroBow  implements Listener {
 
         Arrow arrow = player.launchProjectile(Arrow.class);
         arrow.setShooter(player);
-        arrow.setVelocity(player.getLocation().getDirection().multiply(2));
+        arrow.setFireTicks(10);
+        arrow.setVelocity(player.getLocation().getDirection().multiply(4.5));
         arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
 
-        player.playSound(player.getLocation(), Sound.ENTITY_ARROW_SHOOT, 1, 1);
+        player.playSound(player.getLocation(), Sound.ENTITY_ARROW_SHOOT, 1, 4);
         player.spawnParticle(Particle.CRIT, player.getLocation().add(0, 1.5, 0), 10);
 
         new BukkitRunnable() {
@@ -84,3 +85,4 @@ public class HeroBow  implements Listener {
         cooldowns.put(player, System.currentTimeMillis());
     }
 }
+
