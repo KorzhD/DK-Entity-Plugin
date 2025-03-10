@@ -1,9 +1,11 @@
 package org.example.dmytrok.dkserverplugin.UTILS;
 
 import org.bukkit.GameMode;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerToggleSprintEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.example.dmytrok.dkserverplugin.DK_Server_Plugin;
@@ -39,7 +41,7 @@ public class Stamina implements Listener {
             public void run() {
                 if (player.isSprinting() && player.getFoodLevel() > 1) {
                     if(player.getFoodLevel() < 8) {
-                        player.setFoodLevel(player.getFoodLevel() - 2);
+                        player.setFoodLevel(player.getFoodLevel() - 8);
                     }
                     player.setFoodLevel(player.getFoodLevel() - 1);
                 } else {
@@ -74,5 +76,18 @@ public class Stamina implements Listener {
             }
         }
 
+    }
+
+    @EventHandler
+    public void onPlayerDamageByHunger(EntityDamageEvent event) {
+        if(event.getEntity() == null) {
+            return;
+        }
+        if(!(event.getEntity() instanceof Player)) {
+            return;
+        }
+        if(event.getCause().equals(EntityDamageEvent.DamageCause.STARVATION)) {
+            event.setCancelled(true);
+        }
     }
 }

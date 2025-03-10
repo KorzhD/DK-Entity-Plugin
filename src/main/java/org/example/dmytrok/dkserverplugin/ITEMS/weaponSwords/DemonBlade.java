@@ -42,6 +42,7 @@ public class DemonBlade implements Listener {
         }
 
         ItemStack item = player.getInventory().getItemInMainHand();
+
         if(LevelCheck.isLevelTooLow(player, item)) {
             return;
         }

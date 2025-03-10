@@ -17,14 +17,14 @@ public class BowCreator {
          bloodthirstyMeta.setDisplayName("Bloodthirsty");
          bloodthirstyMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("///");
+        lore.add("§4Like a man walking through the desert, thirsty for water to saturate himself");
         lore.add("");
         lore.add("§d§lRarity:");
-        lore.add("§a§lLvl: §e");
-        lore.add("§4§lDamage: §7");
+        lore.add("§a§lLvl: §e30");
+        lore.add("§4§lDamage: §730");
         lore.add("");
         lore.add("");
-        lore.add("");
+        lore.add("§4§lThe Curse of Bloodlust");
          bloodthirstyMeta.setLore(lore);
          bloodthirstyMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
@@ -38,14 +38,14 @@ public class BowCreator {
         lolMeta.setDisplayName("Lord of Lightning");
         lolMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("///");
+        lore.add("§bA gift from the gods, an infinite amount of all-destroying lightning.");
         lore.add("");
         lore.add("§d§lRarity:");
         lore.add("§a§lLvl: §e");
         lore.add("§4§lDamage: §7");
         lore.add("");
         lore.add("");
-        lore.add("");
+        lore.add("§b§lZeus Arrow");
         lolMeta.setLore(lore);
         lolMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
                 ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON);
