@@ -22,19 +22,19 @@ public class ScoreboardManager implements Listener {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         Objective objective = scoreboard.registerNewObjective("Stats", "dummy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-        objective.setDisplayName("§l§b " + player.getDisplayName() + "'s Statistic");
+        objective.setDisplayName("  §b§l " + player.getDisplayName() + "'s Statistic");
 
         objective.getScore("  ").setScore(10);
-        objective.getScore("§l§dLevel: " + LevelSystem.getLevel(player)).setScore(9);
-        objective.getScore("§l§6Exp: " + LevelSystem.getExp(player)).setScore(8);
+        objective.getScore("§d§lLevel: " + LevelSystem.getLevel(player)).setScore(9);
+        objective.getScore("§6§lExp: " + LevelSystem.getExp(player)).setScore(8);
         objective.getScore("§6To new Level: " + LevelSystem.getRequiredExp(LevelSystem.getLevel(player))).setScore(7);
         objective.getScore("   ").setScore(6);
-        objective.getScore("    ").setScore(5);
+        objective.getScore("§2§lClass: ").setScore(5);
         objective.getScore("     ").setScore(4);
         objective.getScore("      ").setScore(3);
         objective.getScore("       ").setScore(2);
         objective.getScore("        ").setScore(1);
-        objective.getScore("         ").setScore(0);
+        objective.getScore("    §f§l ⇒ www.projectunderworld.com ⇐").setScore(0);
 
         player.setScoreboard(scoreboard);
         playerScoreboards.put(player, scoreboard);
