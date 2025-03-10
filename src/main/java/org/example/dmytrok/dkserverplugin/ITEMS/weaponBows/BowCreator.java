@@ -19,7 +19,7 @@ public class BowCreator {
         List<String> lore = new ArrayList<>();
         lore.add("§4Like a man walking through the desert, thirsty for water to saturate himself");
         lore.add("");
-        lore.add("§d§lRarity:");
+        lore.add("§d§lRarity: §eLegendary");
         lore.add("§a§lLvl: §e30");
         lore.add("§4§lDamage: §730");
         lore.add("");
@@ -40,9 +40,9 @@ public class BowCreator {
         List<String> lore = new ArrayList<>();
         lore.add("§bA gift from the gods, an infinite amount of all-destroying lightning.");
         lore.add("");
-        lore.add("§d§lRarity:");
-        lore.add("§a§lLvl: §e");
-        lore.add("§4§lDamage: §7");
+        lore.add("§d§lRarity: §eLegendary");
+        lore.add("§a§lLvl: §e30");
+        lore.add("§4§lDamage: §730");
         lore.add("");
         lore.add("");
         lore.add("§b§lZeus Arrow");
