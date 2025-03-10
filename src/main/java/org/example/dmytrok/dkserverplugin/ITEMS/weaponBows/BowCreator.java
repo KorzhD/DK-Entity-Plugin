@@ -258,13 +258,13 @@ public class BowCreator {
         soulSlayerMeta.setDisplayName("Soul Slayer");
         soulSlayerMeta.setUnbreakable(true);
         List<String> lore = new ArrayList<>();
-        lore.add("///");
+        lore.add("§fA bow that can shoot through the soul.");
         lore.add("");
         lore.add("§d§lRarity: §5Epic");
         lore.add("§a§lLvl: §e17");
         lore.add("§4§lDamage: §720");
         lore.add("");
-        lore.add("");
+        lore.add("§fSoul Collector: §7Shift + RMB");
         lore.add("");
         soulSlayerMeta.setLore(lore);
         soulSlayerMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,

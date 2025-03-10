@@ -1,9 +1,10 @@
-package org.example.dmytrok.dkserverplugin.ITEMS.weaponBows.notready;
+package org.example.dmytrok.dkserverplugin.ITEMS.weaponBows;
 
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,10 +15,12 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.example.dmytrok.dkserverplugin.DK_Server_Plugin;
 import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelCheck;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class SoulSlayer  implements Listener {
+public class SoulSlayer implements Listener {
     private final Map<Player, Long> cooldowns = new HashMap<>();
     private final long cooldownTime = 1000;
 
@@ -74,22 +77,57 @@ public class SoulSlayer  implements Listener {
             }
         }.runTaskLater(DK_Server_Plugin.getInstance(), 40);
 
-
         setCooldown(player);
     }
 
     private void performCombo(Player player) {
-        player.sendTitle("§6§lCombo!", "", 15, 15, 15);
+        player.sendTitle("§6§lCombo!", "§fSoul Collector", 15, 15, 15);
         player.playSound(player.getLocation(), Sound.ENTITY_ENDEREYE_DEATH, 3, 1);
 
+        List<LivingEntity> targets = getNearbyMobs(player, 15);
+
+        for (LivingEntity target : targets) {
+            target.setVelocity(player.getLocation().subtract(target.getLocation()).toVector().normalize().multiply(1.5));
+        }
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+
+                for (LivingEntity target : targets) {
+
+                    target.damage(10, player);
+
+
+                    Arrow arrow = player.launchProjectile(Arrow.class);
+                    arrow.setShooter(player);
+                    arrow.setVelocity(target.getLocation().subtract(player.getLocation()).toVector().normalize().multiply(1.5));
+                    arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
+
+
+                    target.setVelocity(target.getLocation().subtract(player.getLocation()).toVector().normalize().multiply(2));
+
+                    player.spawnParticle(Particle.EXPLOSION_LARGE, target.getLocation(), 1);
+                    player.playSound(target.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1, 1);
+                }
+            }
+        }.runTaskLater(DK_Server_Plugin.getInstance(), 20);
 
         setAbilityCooldown(player);
     }
+
+    private List<LivingEntity> getNearbyMobs(Player player, double radius) {
+        List<LivingEntity> nearbyEntities = new ArrayList<>();
+        player.getWorld().getEntitiesByClass(LivingEntity.class).forEach(entity -> {
+            if (entity != player && entity.getLocation().distance(player.getLocation()) <= radius) {
+                nearbyEntities.add(entity);
+            }
+        });
+        return nearbyEntities;
+    }
+
     private boolean isWoodSword(ItemStack itemStack) {
-        if (itemStack.getType().equals(Material.WOOD_SWORD)) {
-            return true;
-        }
-        return false;
+        return itemStack.getType().equals(Material.WOOD_SWORD);
     }
 
     private boolean isOnCooldown(Player player) {
@@ -127,5 +165,4 @@ public class SoulSlayer  implements Listener {
         long timeLeft = abilityCooldown - (currentTime - lastUsed);
         return Math.max(0, timeLeft / 1000);
     }
-
 }
