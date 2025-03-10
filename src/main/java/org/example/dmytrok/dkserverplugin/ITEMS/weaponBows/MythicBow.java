@@ -1,9 +1,12 @@
-package org.example.dmytrok.dkserverplugin.ITEMS.weaponBows.notready;
+package org.example.dmytrok.dkserverplugin.ITEMS.weaponBows;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,13 +14,14 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 import org.example.dmytrok.dkserverplugin.DK_Server_Plugin;
 import org.example.dmytrok.dkserverplugin.LEVELSYSTEM.LevelCheck;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class SoulSlayer  implements Listener {
+public class MythicBow  implements Listener {
     private final Map<Player, Long> cooldowns = new HashMap<>();
     private final long cooldownTime = 1000;
 
@@ -31,7 +35,7 @@ public class SoulSlayer  implements Listener {
             return;
         }
         if (!(player.getInventory().getItemInMainHand().getItemMeta() != null &&
-                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Soul Slayer"))) {
+                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Mythic Bow"))) {
             return;
         }
         ItemStack item = event.getItem();
@@ -59,7 +63,7 @@ public class SoulSlayer  implements Listener {
 
         Arrow arrow = player.launchProjectile(Arrow.class);
         arrow.setShooter(player);
-        arrow.setVelocity(player.getLocation().getDirection().multiply(9.5));
+        arrow.setVelocity(player.getLocation().getDirection().multiply(8.5));
         arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
 
         player.playSound(player.getLocation(), Sound.ENTITY_ARROW_SHOOT, 1, 1);
@@ -74,17 +78,67 @@ public class SoulSlayer  implements Listener {
             }
         }.runTaskLater(DK_Server_Plugin.getInstance(), 40);
 
-
         setCooldown(player);
     }
 
     private void performCombo(Player player) {
-        player.sendTitle("§6§lCombo!", "", 15, 15, 15);
+        player.sendTitle("§6§lCombo!", "§7A whirlwind of Arrows  ", 15, 15, 15);
         player.playSound(player.getLocation(), Sound.ENTITY_ENDEREYE_DEATH, 3, 1);
 
+        // Вихрь стрел
+        activateArrowWhirlwind(player);
 
         setAbilityCooldown(player);
     }
+
+    private void activateArrowWhirlwind(Player player) {
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDERDRAGON_FIREBALL_EXPLODE, 1, 1);
+        player.spawnParticle(Particle.CLOUD, player.getLocation(), 30, 1, 1, 1, 0.1);
+
+        int numArrows = 10; // Количество стрел для вихря
+        double radius = 5; // Радиус вокруг игрока, где будут лететь стрелы
+        double angleStep = Math.PI * 2 / numArrows; // Шаг угла для распределения стрел
+
+        for (int i = 0; i < numArrows; i++) {
+            double angle = i * angleStep;
+            double x = Math.cos(angle) * radius;
+            double z = Math.sin(angle) * radius;
+            Location arrowLocation = player.getLocation().add(x, 1.5, z);
+
+            Arrow arrow = player.launchProjectile(Arrow.class);
+            arrow.setShooter(player);
+            arrow.setVelocity(new Vector(x, 0, z).normalize().multiply(1.5)); // Направляем стрелу по кругу
+            arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
+
+            // Создание эффекта частиц для стрелы
+            player.spawnParticle(Particle.CRIT_MAGIC, arrowLocation, 1);
+
+            // Уничтожаем стрелы через несколько секунд, если они не столкнутся с чем-то
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if (!arrow.isDead() && !arrow.isInBlock()) {
+                        arrow.remove();
+                    }
+                }
+            }.runTaskLater(DK_Server_Plugin.getInstance(), 40); // Удалить через 2 секунды
+
+            // Проверка на попадания в сущностей
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    for (Entity entity : player.getNearbyEntities(radius, radius, radius)) {
+                        if (entity instanceof LivingEntity && entity != player) {
+                            LivingEntity target = (LivingEntity) entity;
+                            target.damage(5); // Урон при попадании
+                            target.setVelocity(new Vector(0, 1, 0)); // Отбрасывание вверх
+                        }
+                    }
+                }
+            }.runTaskLater(DK_Server_Plugin.getInstance(), 20); // Проверка через 1 секунду после запуска стрелы
+        }
+    }
+
     private boolean isWoodSword(ItemStack itemStack) {
         if (itemStack.getType().equals(Material.WOOD_SWORD)) {
             return true;
@@ -127,5 +181,4 @@ public class SoulSlayer  implements Listener {
         long timeLeft = abilityCooldown - (currentTime - lastUsed);
         return Math.max(0, timeLeft / 1000);
     }
-
 }

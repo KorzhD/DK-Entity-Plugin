@@ -18,9 +18,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Berserk implements Listener {
-
     private final Map<Player, Long> cooldowns = new HashMap<>();
     private final long cooldownTime = 1000;
+
+    private final long abilityCooldown = 30000;
+    private final Map<Player, Long> abilityCooldowns = new HashMap<>();
 
     @EventHandler
     public void onWeaponUse(PlayerInteractEvent event) {
@@ -45,9 +47,19 @@ public class Berserk implements Listener {
             return;
         }
 
+        if(player.isSneaking()) {
+            if(!isOnAbilityCooldown(player)) {
+                performCombo(player);
+            } else {
+                player.sendMessage( "§4§lRecharge: " + getAbilityCooldown(player) + " sec");
+                player.playSound(player.getLocation(), Sound.ENTITY_CAT_HURT, 2, 200);
+                return;
+            }
+        }
+
         Arrow arrow = player.launchProjectile(Arrow.class);
         arrow.setShooter(player);
-        arrow.setVelocity(player.getLocation().getDirection().multiply(2));
+        arrow.setVelocity(player.getLocation().getDirection().multiply(9.5));
         arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
 
         player.playSound(player.getLocation(), Sound.ENTITY_ARROW_SHOOT, 1, 1);
@@ -64,6 +76,14 @@ public class Berserk implements Listener {
 
 
         setCooldown(player);
+    }
+
+    private void performCombo(Player player) {
+        player.sendTitle("§6§lCombo!", "", 15, 15, 15);
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDEREYE_DEATH, 3, 1);
+
+
+        setAbilityCooldown(player);
     }
     private boolean isWoodSword(ItemStack itemStack) {
         if (itemStack.getType().equals(Material.WOOD_SWORD)) {
@@ -84,4 +104,28 @@ public class Berserk implements Listener {
     private void setCooldown(Player player) {
         cooldowns.put(player, System.currentTimeMillis());
     }
+
+    private boolean isOnAbilityCooldown(Player player) {
+        if (!abilityCooldowns.containsKey(player)) {
+            return false;
+        }
+        long lastUsed = abilityCooldowns.get(player);
+        long currentTime = System.currentTimeMillis();
+        return (currentTime - lastUsed) < abilityCooldown;
+    }
+
+    private void setAbilityCooldown(Player player) {
+        abilityCooldowns.put(player, System.currentTimeMillis());
+    }
+
+    private long getAbilityCooldown(Player player) {
+        if (!abilityCooldowns.containsKey(player)) {
+            return 0;
+        }
+        long lastUsed = abilityCooldowns.get(player);
+        long currentTime = System.currentTimeMillis();
+        long timeLeft = abilityCooldown - (currentTime - lastUsed);
+        return Math.max(0, timeLeft / 1000);
+    }
+
 }

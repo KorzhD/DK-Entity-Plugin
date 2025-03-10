@@ -287,7 +287,7 @@ public class BowCreator {
         lore.add("§a§lLvl: §e15");
         lore.add("§4§lDamage: §717");
         lore.add("");
-        lore.add("///");
+        lore.add("§7A whirlwind of Arrows: §7Shift + RMB");
         lore.add("");
         mythicBowMeta.setLore(lore);
         mythicBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
@@ -310,7 +310,7 @@ public class BowCreator {
         lore.add("§a§lLvl: §e13");
         lore.add("§4§lDamage: §715");
         lore.add("");
-        lore.add("///");
+        lore.add("§l§6Legolas: §7Shift + RMB");
         lore.add("");
         legendaryBowMeta.setLore(lore);
         legendaryBowMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE,
